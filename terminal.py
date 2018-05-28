@@ -7,7 +7,7 @@ ctx = Context('terminal', func=lambda app, win: any(
 
 keymap = {
     'cd': ['cd ; ls', Key('left'), Key('left'), Key('left'), Key('left')],
-    'cd back': 'cd -; ls\n',
+    'cd back': 'cd -; ls2\n',
     'cd develop': 'cd ~/dev; ls\n',
     'cd home': 'cd ~; ls\n',
     'cd up': 'cd ..; ls\n',
@@ -20,8 +20,9 @@ keymap = {
     'mux leave': [Key('ctrl-b'), Key('d')],
     'mux scroll': [Key('ctrl-b'), Key('[')],
 
+    'run list all': 'ls -lah\n',
     'run list long': 'ls -lh\n',
-    'run get voice': ['git commit -m \'#talon\'', Key('alt-left')],
+    'run get voice': ['git commit -m \' #talon\'', Key('alt-left'), Key('left')],
     'run bib': 'bibtex ',
     'run socks': 'ssh -D localhost:2020 ',
     'run hawk': 'awk ',
@@ -31,7 +32,7 @@ keymap = {
     'run pseudo-': 'sudo ',
     'run said': 'sed ',
     'run remove': 'rm ',
-    'run remove recursive': 'rm -rf ',
+    'run remove force': 'rm -rf ',
 
     'pain left': [Key('ctrl-b'), Key('left')],
     'pain right': [Key('ctrl-b'), Key('right')],
@@ -40,8 +41,6 @@ keymap = {
     'kite': [Key('esc'), Key('d')],
     'trough': [Key('ctrl-w')],
     'tools oedipus': [Key('ctrl-x'), Key('ctrl-e')],
-    # 'open sublime': Str('subl .\n'),
-    # 'open adam': Str('atom .\n'),
 
     'tools full-screen': Key('cmd-enter'),
     'tools exit': [Key('ctrl-c'), 'exit\n'],

@@ -20,8 +20,8 @@ keymap = {
     'window space left': Key('cmd-alt-ctrl-left'),
 
     # Following three commands should be application specific
-    'tab last': Key('cmd-alt-left'),
-    'tab next': Key('cmd-alt-right'),
+    'tab last': Key('cmd-shift-['),
+    'tab next': Key('cmd-shift-]'),
     'tab new': Key('cmd-t'),
     'tab reset': Key('cmd-r'),
 
