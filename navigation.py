@@ -9,7 +9,6 @@ keymap = {
 
     # Application navigation
     'launcher': Key('cmd-space'),
-    # 'launcher spot': Key('cmd-space'),
     'swick': Key('cmd-tab'),
     'tab close': Key('cmd-w'),
     'window new': Key('cmd-n'),
@@ -23,7 +22,7 @@ keymap = {
     'tab last': Key('cmd-shift-['),
     'tab next': Key('cmd-shift-]'),
     'tab new': Key('cmd-t'),
-    'tab reset': Key('cmd-r'),
+    'tab reload': Key('cmd-r'),
 
     # deleting
     'junk': Key('backspace'),

@@ -17,6 +17,7 @@ COMMANDS = Struct(
     FIND_PREVIOUS = 'p',
     COPY_LINE = 'c',
     MOVE_LINE = 'm',
+    SELECT_UNTIL = 'u',
 )
 
 ############## support for parsing numbers as command postfix
@@ -128,6 +129,10 @@ def select_lines(m):
     line_range = text_to_number(m)
     execute_atom_command(COMMANDS.SELECT_LINES, str(line_range))
 
+def select_until(m):
+    line = text_to_number(m)
+    execute_atom_command(COMMANDS.SELECT_UNTIL, str(line))
+
 keymap = {
     'sprinkle' + optional_numerals: jump_to_bol,
     'spring' + optional_numerals: jump_to_eol_and(jump_to_beginning_of_text),
@@ -154,6 +159,7 @@ keymap = {
 
     'shackle': Key('cmd-l'),
     'selrang' + numerals: select_lines,
+    'salty' + numerals: select_until,
 
     'shockey': Key('cmd-shift-enter'),
     'shockoon': Key('cmd-right enter'),

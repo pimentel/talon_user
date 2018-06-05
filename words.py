@@ -18,6 +18,8 @@ keymap = {
     'word shell': 'shell',
     'word get': 'git',
 
+    'shrink parameters': 'params',
+    'shrink parameter': 'param',
 
     'title shake file': 'Snakefile',
     'word shake make': 'snakemake',
@@ -61,6 +63,10 @@ keymap = {
     # unix style words
     'shrink server': 'srv',
     'shrink user': 'usr',
+    'shrink parameter': 'param',
+
+    # weird tech words
+    'word trello': 'trello',
 }
 
 keymap.update({

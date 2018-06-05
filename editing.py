@@ -10,6 +10,7 @@ keymap = {
     'snipple': Key('shift-cmd-left delete'),
     'snipper': Key('shift-cmd-right delete'),
     'trundle': Key('cmd-/'),
+
 }
 
 ctx.keymap(keymap)

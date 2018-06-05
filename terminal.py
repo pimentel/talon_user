@@ -25,6 +25,7 @@ keymap = {
     'run get voice': ['git commit -m \' #talon\'', Key('alt-left'), Key('left')],
     'run bib': 'bibtex ',
     'run socks': 'ssh -D localhost:2020 ',
+    'run grep': 'grep ',
     'run hawk': 'awk ',
     'run copy': 'cp -rf ',
     'run sink': 'rsync -ravh',
@@ -33,9 +34,18 @@ keymap = {
     'run said': 'sed ',
     'run remove': 'rm ',
     'run remove force': 'rm -rf ',
+    'run top': 'htop\n',
+
+    'run interactive': 'sdev -p pritch -t 2:00:00 -m 16GB',
+    'run SQ': 'squeue -u $USER\n',
+
+    # snakemake
+    'shake dry': 'snakemake -p --dryrun\n',
 
     'pain left': [Key('ctrl-b'), Key('left')],
     'pain right': [Key('ctrl-b'), Key('right')],
+    'pain up': [Key('ctrl-b'), Key('up')],
+    'pain down': [Key('ctrl-b'), Key('down')],
 
     'snipple': [Key('ctrl-a'), Key('ctrl-k')],
     'kite': [Key('esc'), Key('d')],
@@ -46,11 +56,12 @@ keymap = {
     'tools exit': [Key('ctrl-c'), 'exit\n'],
     'window clear': Key('cmd-k'),
 
-    'shake dry': 'snakemake -p --dryrun\n',
     'find here': ['find . -name \'\'', Key('left')],
     'open here': 'open .\n',
+    'adam here': 'atom .\n',
     'run sq': 'squeue -u $USER\n',
     'run df': 'df -h\n',
+    'run secure': 'ssh ',
 }
 
 ctx.keymap(keymap)

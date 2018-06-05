@@ -24,17 +24,18 @@ keymap = {
     'termite': lambda x: short_application(x, 'iTerm2'),
     'masseuse': lambda x: short_application(x, 'Messages'),
     'chromie': lambda x: short_application(x, 'Google Chrome'),
-    'roman': lambda x: short_application(x, 'R')
+    'roman': lambda x: short_application(x, 'R'),
     # 'slacker': lambda x: short_application(x, 'Slack')
 }
+
 ctx.keymap(keymap)
 
 def update_lists():
     global apps
     new = {}
     for app in ui.apps():
-        if not app.windows():
-            continue
+        # if not app.windows():
+        #     continue
         words = app.name.split(' ')
         for word in words:
             if word and not word in new:
