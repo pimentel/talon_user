@@ -17,6 +17,13 @@ keymap = {
     'word (dickt | dictionary)': 'dict',
     'word shell': 'shell',
     'word get': 'git',
+    'word them': 'vim',
+
+    'word stood in': 'stdin',
+    'word stood out': 'stdout',
+    'word stood err': 'stderr',
+    'word write': 'write',
+    'word linux': 'linux',
 
     'shrink parameters': 'params',
     'shrink parameter': 'param',
@@ -33,6 +40,8 @@ keymap = {
     # names
     'word wife': 'puente',
     'title wife': 'Puente',
+    'word son': 'avi',
+    'title son': 'Avi',
     'word kyle': 'lior',
     'word bays': 'bayes',
     'title bays': 'Bayes',

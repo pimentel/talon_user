@@ -22,7 +22,7 @@ keymap = {
 
     'run list all': 'ls -lah\n',
     'run list long': 'ls -lh\n',
-    'run get voice': ['git commit -m \' #talon\'', Key('alt-left'), Key('left')],
+    'run get voice': ['git commit -am \' #talon\'', Key('alt-left'), Key('left')],
     'run bib': 'bibtex ',
     'run socks': 'ssh -D localhost:2020 ',
     'run grep': 'grep ',

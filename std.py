@@ -215,7 +215,7 @@ keymap.update({
     # 'enter': Key('enter'),
     'shock': Key('enter'),
     # 'escape': Key('esc'),
-    'randall': Key('esc'),
+    'risk': Key('esc'),
     'question [mark]': '?',
     'tilde': '~',
     '(bang | exclamation point)': '!',
@@ -277,7 +277,7 @@ keymap.update({
     'run get rebase': 'git rebase ',
     'run get reset': 'git reset ',
     'run get show': 'git show ',
-    'run get status': 'git status ',
+    'run get status': 'git status\n',
     'run get tag': 'git tag ',
     'run (them | vim)': 'vim ',
 

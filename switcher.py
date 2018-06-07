@@ -18,14 +18,14 @@ def short_application(m, app):
 
 ctx = Context('switcher')
 keymap = {
-    'focus {switcher.apps}': switch_app,
+    'fox {switcher.apps}': switch_app,
 
     'madame': lambda x: short_application(x, 'Atom'),
     'termite': lambda x: short_application(x, 'iTerm2'),
     'masseuse': lambda x: short_application(x, 'Messages'),
     'chromie': lambda x: short_application(x, 'Google Chrome'),
     'roman': lambda x: short_application(x, 'R'),
-    # 'slacker': lambda x: short_application(x, 'Slack')
+    'emacs': lambda x: short_application(x, 'MacVim'),
 }
 
 ctx.keymap(keymap)
