@@ -6,10 +6,12 @@ from user.utils import parse_words_as_integer
 
 
 websites = {
-        'facebook': 'facebook.com',
-        'twitter': 'twitter.com',
-        'trello': 'trello.com',
-        'gmail': 'gmail.com',
+    'test': 'test',
+    'facebook': 'facebook.com',
+    'twitter': 'twitter.com',
+    'trello': 'trello.com',
+    'gmail': 'gmail.com',
+    'get hub': 'github.com',
 }
 
 context = Context('GoogleChrome', bundle='com.google.Chrome')

@@ -11,4 +11,5 @@ ctx.keymap({
     'pain vertical': [Key('escape'), ':vsplit\n'],
     'pain horizontal': [Key('escape'), ':split\n'],
 
+    'lead': ',',
 })

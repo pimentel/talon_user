@@ -13,7 +13,7 @@ extra_modifier_key_targets = {'left':'left','right':'right','up':'up','down':'do
 for (k, v) in extra_modifier_key_targets.items():
     alnum.append((k, v))
 
-alpha.update({'sky %s' % word: letter for word, letter in zip(alpha_alt, string.ascii_uppercase)})
+alpha.update({'ship %s' % word: letter for word, letter in zip(alpha_alt, string.ascii_uppercase)})
 
 alpha.update({'troll %s' % k: Key('ctrl-%s' % v) for k, v in alnum})
 alpha.update({'coof %s' % k: Key('cmd-%s' % v) for k, v in alnum})
@@ -251,7 +251,6 @@ keymap.update({
     'backslash': '\\',
 
     '(dot dot | dotdot)': '..',
-    # 'cd': 'cd ',
     'cd talon home': 'cd {}'.format(TALON_HOME),
     'cd talon user': 'cd {}'.format(TALON_USER),
     'cd talon plugins': 'cd {}'.format(TALON_PLUGINS),
