@@ -17,6 +17,7 @@ keymap = {
     'word (dickt | dictionary)': 'dict',
     'word shell': 'shell',
     'word get': 'git',
+    'word get hub': 'github',
     'word them': 'vim',
 
     'word stood in': 'stdin',
