@@ -7,7 +7,7 @@ alpha_alt = 'air bat cap die each fail gone harm ice jury crash look mad near od
 alnum = list(zip(alpha_alt, string.ascii_lowercase)) + [(str(i), str(i)) for i in range(0, 10)]
 
 alpha = {}
-alpha.update(dict(alnum))
+# alpha.update(dict(alnum))
 
 extra_modifier_key_targets = {'left':'left','right':'right','up':'up','down':'down','minus':'-','plus':'+','(return|enter)':'enter','slash':'/','delete':'backspace','space':'space','index right':']','index left':'[','escape':'esc'}
 for (k, v) in extra_modifier_key_targets.items():
@@ -20,7 +20,7 @@ alpha.update({'coof %s' % k: Key('cmd-%s' % v) for k, v in alnum})
 alpha.update({'shoff %s' % k: Key('cmd-shift-%s' % v) for k, v in alnum})
 alpha.update({'alt %s' % k: Key('alt-%s' % v) for k, v in alnum})
 
-alpha.update({'troll shift %s' % k: Key('ctrl-shift-%s' % v) for k, v in alnum})
+alpha.update({'troll ship %s' % k: Key('ctrl-shift-%s' % v) for k, v in alnum})
 alpha.update({'troll option %s' % k: Key('ctrl-alt-%s' % v) for k, v in alnum})
 alpha.update({'command control %s' % k: Key('cmd-ctrl-%s' % v) for k, v in alnum})
 alpha.update({'command option %s' % k: Key('cmd-alt-%s' % v) for k, v in alnum})
@@ -223,6 +223,7 @@ keymap.update({
     '(downscore | crunder)': '_',
     '(semi | semicolon)': ';',
     'colon': ':',
+    'coal': ':',
     'coalgap': ': ',
     'coal twice': '::',
     'ellipsis': '...',
@@ -375,6 +376,7 @@ keymap.update({
     '(op (power | exponent) | to the power [of])': ' ** ',
     'op and': ' && ',
     'op or': ' || ',
+    'op pipe': ' | ',
     '[op] (logical | bitwise) and': ' & ',
     '[op] (logical | bitwise) or': ' | ',
     '(op | logical | bitwise) (ex | exclusive) or': ' ^ ',
