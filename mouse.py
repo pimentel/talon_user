@@ -22,9 +22,15 @@ def mouse_release(m):
     x, y = click_pos(m)
     ctrl.mouse_click(x, y, up=True)
 
+def command_click(m):
+    ctrl.key_press('cmd', down = True)
+    ctrl.mouse_click(button = 0)
+    ctrl.key_press('cmd', up = True)
+
 keymap = {
     'righty': lambda x: ctrl.mouse_click(button = 1),
     'click': lambda x: ctrl.mouse_click(button = 0),
+    'command click': command_click,
     'dubclick': lambda x: ctrl.mouse_click(button = 0, times = 2, wait = 16000),
     'tripclick': lambda x: ctrl.mouse_click(button = 0, times = 3, wait = 16000),
     'drag': mouse_drag,

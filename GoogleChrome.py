@@ -6,12 +6,13 @@ from user.utils import parse_words_as_integer
 
 
 websites = {
-    'test': 'test',
     'facebook': 'facebook.com',
     'twitter': 'twitter.com',
     'trello': 'trello.com',
     'gmail': 'gmail.com',
     'get hub': 'github.com',
+    'talon docs': 'https://github.com/dwighthouse/unofficial-talonvoice-docs',
+    'talon official docs': 'https://talonvoice.com/docs/index.html',
 }
 
 context = Context('GoogleChrome', bundle='com.google.Chrome')

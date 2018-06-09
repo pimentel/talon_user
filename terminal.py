@@ -12,6 +12,12 @@ keymap = {
     'cd home': 'cd ~; ls\n',
     'cd up': 'cd ..; ls\n',
 
+    'cd talon home': 'cd ~/.talon; ls\n',
+    'cd talon user': 'cd ~/.talon/user; ls\n',
+
+    'armin': ' -',
+    'longarmin': ' --',
+
     'mux new': 'tmux new -s ',
     'mux attach': 'tmux attach -t ',
     'mux list': 'tmux ls\n',
@@ -20,6 +26,9 @@ keymap = {
     'mux leave': [Key('ctrl-b'), Key('d')],
     'mux scroll': [Key('ctrl-b'), Key('[')],
 
+    'run cat': 'cat ',
+    'run less': 'less ',
+    'run list': 'ls\n',
     'run list all': 'ls -lah\n',
     'run list long': 'ls -lh\n',
     'run get voice': ['git commit -am \' #talon\'', Key('alt-left'), Key('left')],
@@ -29,6 +38,7 @@ keymap = {
     'run hawk': 'awk ',
     'run copy': 'cp -rf ',
     'run sink': 'rsync -ravh',
+    'run make': 'mkdir -p ',
     'run see make': 'cmake ..',
     'run pseudo-': 'sudo ',
     'run said': 'sed ',
@@ -36,12 +46,37 @@ keymap = {
     'run remove force': 'rm -rf ',
     'run top': 'htop\n',
 
+    'run get': 'git ',
+    'run get (R M | remove)': 'git rm ',
+    'run get add': 'git add ',
+    'run get bisect': 'git bisect ',
+    'run get branch': 'git branch ',
+    'run get checkout': 'git checkout ',
+    'run get clone': 'git clone ',
+    'run get commit': 'git commit ',
+    'run get diff': 'git diff ',
+    'run get fetch': 'git fetch ',
+    'run get grep': 'git grep ',
+    'run get in it': 'git init .',
+    'run get log': 'git log ',
+    'run get merge': 'git merge ',
+    'run get move': 'git mv ',
+    'run get pull': 'git pull ',
+    'run get push': 'git push ',
+    'run get rebase': 'git rebase ',
+    'run get reset': 'git reset ',
+    'run get show': 'git show ',
+    'run get status': 'git status\n',
+    'run get tag': 'git tag ',
+    'run (them | vim)': 'vim ',
+
     'run interactive': 'sdev -p pritch -t 2:00:00 -m 16GB',
     'run SQ': 'squeue -u $USER\n',
 
     # snakemake
     'shake dry': 'snakemake -p --dryrun\n',
 
+    # assumes in tmux
     'pain left': [Key('ctrl-b'), Key('left')],
     'pain right': [Key('ctrl-b'), Key('right')],
     'pain up': [Key('ctrl-b'), Key('up')],
@@ -52,8 +87,8 @@ keymap = {
     'trough': [Key('ctrl-w')],
     'tools oedipus': [Key('ctrl-x'), Key('ctrl-e')],
 
-    'tools full-screen': Key('cmd-enter'),
-    'tools exit': [Key('ctrl-c'), 'exit\n'],
+    # 'tools full-screen': Key('cmd-enter'),
+    # 'tools exit': [Key('ctrl-c'), 'exit\n'],
     'window clear': Key('cmd-k'),
 
     'find here': ['find . -name \'\'', Key('left')],

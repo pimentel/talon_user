@@ -8,6 +8,12 @@ alpha = {}
 
 alpha.update(dict(alnum))
 
+# these help in vim
+alpha_up = {
+        'gate': 'G',
+        'viz.': 'V',
+        }
+
 case_state = False
 
 def insert_character(m):
@@ -33,6 +39,7 @@ keymap = {
 }
 
 keymap.update({'%s' % k: insert_character for k in alpha})
+keymap.update({'%s' % k: '%s' % v for k, v in alpha_up.items()})
 
 context.keymap(keymap)
 

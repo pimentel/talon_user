@@ -6,10 +6,10 @@ ctx.keymap({
     'pain left': [Key('ctrl-w'), Key('h')],
     'pain right': [Key('ctrl-w'), Key('l')],
     'pain down': [Key('ctrl-w'), Key('j')],
-    'pain up': [Key('ctrl-w'), Key('l')],
+    'pain up': [Key('ctrl-w'), Key('k')],
 
     'pain vertical': [Key('escape'), ':vsplit\n'],
     'pain horizontal': [Key('escape'), ':split\n'],
 
-    'lead': ',',
+    # 'lead': ',',
 })

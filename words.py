@@ -7,10 +7,10 @@ keymap = {
     'word eye': 'eye',
     'word bson': 'bson',
     'word iter': 'iter',
+
     'word no': 'null',
-    'title no': 'NULL',
-    'word cmd': 'cmd',
-    'word control': 'ctrl',
+    'yeller no': 'NULL',
+    
     'word dup': 'dup',
     'word streak': ['streq()', Key('left')],
     'word printf': 'printf',
@@ -19,6 +19,7 @@ keymap = {
     'word get': 'git',
     'word get hub': 'github',
     'word them': 'vim',
+    'word vim': 'vim',
 
     'word stood in': 'stdin',
     'word stood out': 'stdout',
@@ -26,8 +27,10 @@ keymap = {
     'word write': 'write',
     'word linux': 'linux',
 
-    'shrink parameters': 'params',
+    'shrink command': 'cmd',
+    'shrink control': 'ctrl',
     'shrink parameter': 'param',
+    'shrink parameters': 'params',
 
     'title shake file': 'Snakefile',
     'word shake make': 'snakemake',
@@ -60,7 +63,7 @@ keymap = {
 
     'shrink ensemble': 'ensembl',
 
-
+    # R
     'word plier': 'dplyr',
 
     # 'word lunixbochs': 'lunixbochs',
@@ -80,9 +83,8 @@ keymap = {
 }
 
 keymap.update({
-    # 'mark block': ['```\n\n```', Key('up'), Key('up')],
     'insert code': ['```\n\n```', Key('up')],
-    'insert our': ['```{r}\n\n```', Key('up')],
+    '(insert (our | are))': ['```{r}\n\n```', Key('up')],
 })
 
 keymap.update({
@@ -94,6 +96,7 @@ keymap.update({
     'math root': 'sqrt',
     'math empirical': 'ecdf',
     'math poison': 'poisson',
+    'math pie': 'pi',
 })
 
 ctx.keymap(keymap)
