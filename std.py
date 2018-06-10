@@ -231,7 +231,7 @@ keymap.update({
 
     '(star | asterisk)': '*',
     '(pound | hash [sign] | octo | thorpe | number sign)': '#',
-    'percent [sign]': '%',
+    # 'percent [sign]': '%',
     'purse': '%',
     'caret': '^',
     'at sign': '@',
@@ -354,24 +354,5 @@ keymap.update({
     '[(op | logical | bitwise)] (right shift | shift right) equals': ' >>= ',
 
     'shebang bash': '#!/bin/bash -u\n',
-
-    'new window': Key('cmd-n'),
-    'next window': Key('cmd-`'),
-    'last window': Key('cmd-shift-`'),
-    'next app': Key('cmd-tab'),
-    'last app': Key('cmd-shift-tab'),
-    'next tab': Key('ctrl-tab'),
-    'new tab': Key('cmd-t'),
-    'last tab': Key('ctrl-shift-tab'),
-
-    'next space': Key('cmd-alt-ctrl-right'),
-    'last space': Key('cmd-alt-ctrl-left'),
-
-    # 'scroll down': [Key('down')] * 30,
-    'page up': [Key('pageup')],
-    # 'scroll up': [Key('up')] * 30,
-    'page down': [Key('pagedown')],
-    # 'scroll top': [Key('cmd-up')],
-    # 'scroll bottom': [Key('cmd-down')],
 })
 ctx.keymap(keymap)

@@ -21,9 +21,7 @@ context.set_list('websites', websites.keys())
 
 def open_website(m):
     name = str(m._words[1])
-    print(name)
     w = websites.get(name)
-    print(w)
     press('cmd-t')
     Str(w)(None)
     press('enter')

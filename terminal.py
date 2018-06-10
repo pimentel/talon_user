@@ -35,6 +35,7 @@ keymap = {
     'run bib': 'bibtex ',
     'run socks': 'ssh -D localhost:2020 ',
     'run grep': 'grep ',
+    'run ack': 'ack ',
     'run hawk': 'awk ',
     'run copy': 'cp -rf ',
     'run sink': 'rsync -ravh',

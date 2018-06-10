@@ -3,10 +3,6 @@ from talon.voice import Context, Key
 ctx = Context('navigation')
 
 keymap = {
-    # Requires activation of System Preferences -> Shortcuts -> Input Sources
-    # -> "Select the previous input source"
-    # 'change language': Key('ctrl-space'),
-
     # Application navigation
     'launcher': Key('cmd-space'),
     'swick': Key('cmd-tab'),
@@ -18,11 +14,29 @@ keymap = {
     'window space right': Key('cmd-alt-ctrl-right'),
     'window space left': Key('cmd-alt-ctrl-left'),
 
+    'new window': Key('cmd-n'),
+    'next window': Key('cmd-`'),
+    'last window': Key('cmd-shift-`'),
+    'next app': Key('cmd-tab'),
+    'last app': Key('cmd-shift-tab'),
+    'next tab': Key('ctrl-tab'),
+    'new tab': Key('cmd-t'),
+    'last tab': Key('ctrl-shift-tab'),
+
+    'next space': Key('cmd-alt-ctrl-right'),
+    'last space': Key('cmd-alt-ctrl-left'),
     # Following three commands should be application specific
     'tab last': Key('cmd-shift-['),
     'tab next': Key('cmd-shift-]'),
     'tab new': Key('cmd-t'),
     'tab reload': Key('cmd-r'),
+
+    # 'scroll down': [Key('down')] * 30,
+    'page up': [Key('pageup')],
+    # 'scroll up': [Key('up')] * 30,
+    'page down': [Key('pagedown')],
+    # 'scroll top': [Key('cmd-up')],
+    # 'scroll bottom': [Key('cmd-down')],
 
     # deleting
     'junk': Key('backspace'),
@@ -65,5 +79,6 @@ keymap = {
     'shricky': Key('shift-right'),
 }
 
-keymap.update({'tab %s' % v: Key('cmd-%s' % v) for v in range(1, 10)})
+# keymap.update({'tab %s' % v: Key('cmd-%s' % v) for v in range(1, 10)})
+
 ctx.keymap(keymap)
