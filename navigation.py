@@ -17,10 +17,8 @@ keymap = {
 
     'new window': Key('cmd-n'),
 
-    'next app': Key('cmd-tab'),
-    'next tab': Key('ctrl-tab'),
-
-    'last app': Key('cmd-shift-tab'),
+    # 'next app': Key('cmd-tab'),
+    # 'last app': Key('cmd-shift-tab'),
 
     'next space': Key('cmd-alt-ctrl-right'),
     'last space': Key('cmd-alt-ctrl-left'),
@@ -51,8 +49,8 @@ keymap = {
     '(tab | tarp)': Key('tab'),
     'tarsh': Key('shift-tab'),
     'slap': [Key('cmd-right enter')],
-    'locky': Key('alt-left'),
-    'rocky': Key('alt-right'),
+    'peg': Key('alt-left'),
+    'fran': Key('alt-right'),
     'ricky': Key('cmd-right'),
     'lefty': Key('cmd-left'),
     'jeep': Key('up'),
