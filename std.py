@@ -207,6 +207,8 @@ keymap.update({
     'period <dgndictation> [over]': ['. ', sentence_text],
     'more <dgndictation> [over]': [' ', text],
 
+    'code <dgndictation> [over]': [text, ' '],
+
     '(%s)+ <dgndictation>' % (' | '.join(formatters)): FormatText,
 
     'shock': Key('enter'),

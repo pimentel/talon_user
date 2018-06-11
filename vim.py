@@ -3,6 +3,9 @@ from talon.voice import Word, Context, Key, Rep, Str, press
 ctx = Context('vim', bundle='org.vim.MacVim')
 
 ctx.keymap({
+    'trough': Key('ctrl-w'),
+
+    # assumes you are in normal mode
     'pain left': [Key('ctrl-w'), Key('h')],
     'pain right': [Key('ctrl-w'), Key('l')],
     'pain down': [Key('ctrl-w'), Key('j')],
@@ -11,6 +14,6 @@ ctx.keymap({
     'pain vertical': [Key('escape'), ':vsplit\n'],
     'pain horizontal': [Key('escape'), ':split\n'],
 
-    'run ack': ['Ack! \'\'', Key('left')],
+    'run (back | ack)': ['Ack! -i \'\'', Key('left')],
     # 'lead': ',',
 })

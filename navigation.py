@@ -6,30 +6,30 @@ keymap = {
     # Application navigation
     'launcher': Key('cmd-space'),
     'swick': Key('cmd-tab'),
-    'tab close': Key('cmd-w'),
-    'window new': Key('cmd-n'),
-    'window close': Key('cmd-shift-w'),
-    '(window next | gibby)': Key('cmd-`'),
-    '(window last | shibby)': Key('cmd-shift-`'),
+
+    'close tab': Key('cmd-w'),
+    'close window': Key('cmd-shift-w'),
+
+    '(next window | gibby)': Key('cmd-`'),
+    '(last window | shibby)': Key('cmd-shift-`'),
     'window space right': Key('cmd-alt-ctrl-right'),
     'window space left': Key('cmd-alt-ctrl-left'),
 
     'new window': Key('cmd-n'),
-    'next window': Key('cmd-`'),
-    'last window': Key('cmd-shift-`'),
+
     'next app': Key('cmd-tab'),
-    'last app': Key('cmd-shift-tab'),
     'next tab': Key('ctrl-tab'),
-    'new tab': Key('cmd-t'),
-    'last tab': Key('ctrl-shift-tab'),
+
+    'last app': Key('cmd-shift-tab'),
 
     'next space': Key('cmd-alt-ctrl-right'),
     'last space': Key('cmd-alt-ctrl-left'),
+
     # Following three commands should be application specific
-    'tab last': Key('cmd-shift-['),
-    'tab next': Key('cmd-shift-]'),
-    'tab new': Key('cmd-t'),
-    'tab reload': Key('cmd-r'),
+    'last tab': Key('cmd-shift-['),
+    'next tab': Key('cmd-shift-]'),
+    'new tab': Key('cmd-t'),
+    'reload tab': Key('cmd-r'),
 
     # 'scroll down': [Key('down')] * 30,
     'page up': [Key('pageup')],
@@ -78,7 +78,5 @@ keymap = {
     'shlicky': Key('shift-left'),
     'shricky': Key('shift-right'),
 }
-
-# keymap.update({'tab %s' % v: Key('cmd-%s' % v) for v in range(1, 10)})
 
 ctx.keymap(keymap)
