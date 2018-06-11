@@ -9,7 +9,7 @@ Much of the base has been borrowed from many other users. Particularly,
 - [official examples](https://github.com/talonvoice/examples)
 
 You will notice that a lot of the stuff here has some odd words and probably deviates from others.
-Since I was a former VoiceCode user, some of the language has been influence from there.
+Since I was a former VoiceCode user, some of the language has been influenced from there.
 
 Put these in `~/.talon/user`.
 
