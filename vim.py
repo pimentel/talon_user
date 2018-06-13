@@ -6,6 +6,7 @@ ctx.keymap({
     'trough': Key('ctrl-w'),
 
     # assumes you are in normal mode
+    'vip': 'vip',
     'pain left': [Key('ctrl-w'), Key('h')],
     'pain right': [Key('ctrl-w'), Key('l')],
     'pain down': [Key('ctrl-w'), Key('j')],
@@ -14,6 +15,6 @@ ctx.keymap({
     'pain vertical': [Key('escape'), ':vsplit\n'],
     'pain horizontal': [Key('escape'), ':split\n'],
 
-    'run (back | ack)': ['Ack! -i \'\'', Key('left')],
+    'run (back | ack)': [':Ack! -i \'\'', Key('left')],
     # 'lead': ',',
 })

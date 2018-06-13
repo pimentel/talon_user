@@ -29,8 +29,8 @@ keymap = {
     'run cat': 'cat ',
     'run less': 'less ',
     'run list': 'ls\n',
-    'run list all': 'ls -lah\n',
-    'run list long': 'ls -lh\n',
+    'run list all': 'ls -lah ',
+    'run list long': 'ls -lh ',
     'run get voice': ['git commit -am \' #talon\'', Key('alt-left'), Key('left')],
     'run bib': 'bibtex ',
     'run socks': 'ssh -D localhost:2020 ',
@@ -43,6 +43,8 @@ keymap = {
     'run see make': 'cmake ..',
     'run pseudo-': 'sudo ',
     'run said': 'sed ',
+    'run move': 'mv ',
+    'run touch': 'touch ',
     'run remove': 'rm ',
     'run remove force': 'rm -rf ',
     'run top': 'htop\n',
@@ -71,7 +73,18 @@ keymap = {
     'run get tag': 'git tag ',
     'run (them | vim)': 'vim ',
 
-    'run interactive': 'sdev -p pritch -t 2:00:00 -m 16GB',
+    'run brew': 'brew ',
+    'run brew tap': 'brew tap ',
+    'run brew search': 'brew search ',
+    'run brew upgrade': 'brew upgrade ',
+    'run brew update': 'brew update ',
+    'run brew install': 'brew install ',
+    'run cask install': 'brew cask install ',
+    'run cask search': 'brew cask search ',
+
+    'run stow': 'stow ',
+
+    'run interactive': ['sdev -p pritch -t 2:00:00 -m 16GB', Key('left'), Key('left')],
     'run SQ': 'squeue -u $USER\n',
 
     # snakemake
