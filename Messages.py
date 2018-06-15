@@ -4,6 +4,6 @@ import string
 ctx = Context('messages', bundle = 'com.apple.iChat')
 
 ctx.keymap({
-  'tab next': Key('cmd-shift-]'),
-  'tab last': Key('cmd-shift-['),
+  'next tab': Key('cmd-shift-]'),
+  'last tab': Key('cmd-shift-['),
 })

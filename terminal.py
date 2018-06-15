@@ -14,9 +14,7 @@ keymap = {
 
     'cd talon home': 'cd ~/.talon; ls\n',
     'cd talon user': 'cd ~/.talon/user; ls\n',
-
-    'armin': ' -',
-    'longarmin': ' --',
+    'run talon log': 'tail -f ~/.talon/talon.log\n',
 
     'mux new': 'tmux new -s ',
     'mux attach': 'tmux attach -t ',
@@ -101,8 +99,6 @@ keymap = {
     'trough': [Key('ctrl-w')],
     'tools oedipus': [Key('ctrl-x'), Key('ctrl-e')],
 
-    # 'tools full-screen': Key('cmd-enter'),
-    # 'tools exit': [Key('ctrl-c'), 'exit\n'],
     'window clear': Key('cmd-k'),
 
     'find here': ['find . -name \'\'', Key('left')],

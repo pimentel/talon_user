@@ -9,8 +9,8 @@ keymap = {
     'windy center': Key('cmd-alt-f'),
     'windy max': Key('cmd-alt-f'),
 
-    'windy left': Key('cmd-alt-left'),
-    'windy right': Key('cmd-alt-right'),
+    'windy left': Key('ctrl-alt-left'),
+    'windy right': Key('ctrl-alt-right'),
     'windy up': Key('cmd-alt-up'),
     'windy down': Key('cmd-alt-down'),
 
@@ -21,9 +21,6 @@ keymap = {
 
     'windy next display': Key('cmd-ctrl-alt-right'),
     'windy previous display': Key('cmd-ctrl-alt-left'),
-
-    'windy next third': Key('ctrl-alt-right'),
-    'windy previous third': Key('ctrl-alt-left'),
 
     'windy larger': Key('shift-ctrl-alt-right'),
     'windy smaller': Key('shift-ctrl-alt-left'),

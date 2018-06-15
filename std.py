@@ -3,7 +3,7 @@ from talon import ctrl
 from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
 import string
 
-alpha_alt = 'air bat cap die each fail gone harm ice jury crash look mad near odd pit quest red sun trap urge vest whale box yes zip'.split()
+alpha_alt = 'air bat cap die each fail gone harm ice jury crash look mad near odd pit quest red sin trap urge vest whale box yes zip'.split()
 alnum = list(zip(alpha_alt, string.ascii_lowercase)) + [(str(i), str(i)) for i in range(0, 10)]
 
 alpha = {}
@@ -264,7 +264,6 @@ keymap.update({
     'caret': '^',
     'at sign': '@',
     '(and sign | ampersand | amper)': '&',
-    'pipe': '|',
 
     '(dubquote | double quote)': '"',
     'quote': "'",
@@ -280,6 +279,9 @@ keymap.update({
     '(dot dot | dotdot)': '..',
 
     'dot pie': '.py',
+    'dot log': '.log',
+    'dot H5': '.h5',
+    'dot com': '.com',
 
     'const': 'const ',
     'static': 'static ',
@@ -334,7 +336,7 @@ keymap.update({
     'string utf8': "'utf8'",
     'state past': 'pass',
 
-    'equals': '=',
+    '(equals | equal)': '=',
     '(minus | dash)': '-',
     'long minus': '--',
     'plus': '+',
@@ -344,7 +346,11 @@ keymap.update({
     # R specific
     'rambo': ' <- ',
     'our pipe': ' %>% ',
+    'state library': ['library(\'\')', Key('left'), Key('left')],
 
+    'armin': ' -',
+    'longarmin': ' --',
+    
     'call': '()',
     'indirect': '&',
     'dereference': '*',
@@ -369,7 +375,7 @@ keymap.update({
     '(op (power | exponent) | to the power [of])': ' ** ',
     'op and': ' && ',
     'op or': ' || ',
-    'op pipe': ' | ',
+    'pipe': ' | ',
     '[op] (logical | bitwise) and': ' & ',
     '[op] (logical | bitwise) or': ' | ',
     '(op | logical | bitwise) (ex | exclusive) or': ' ^ ',
