@@ -2,7 +2,7 @@ from talon.voice import Word, Context, Key, Rep, RepPhrase, Str, press
 from talon import ctrl
 import string
 
-alpha_alt = 'air bat cap die each fail gone harm ice jury crash look mad near odd pit quest red sin trap urge vest whale box yes zip'.split()
+alpha_alt = 'air bat cap die each fail gone harm sit jury crash look mad near odd pit quest red soon trap urge vest whale box yes zip'.split()
 alnum = list(zip(alpha_alt, string.ascii_lowercase)) + [(str(i), str(i)) for i in range(0, 10)]
 alpha = {}
 

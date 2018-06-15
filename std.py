@@ -3,7 +3,7 @@ from talon import ctrl
 from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
 import string
 
-alpha_alt = 'air bat cap die each fail gone harm ice jury crash look mad near odd pit quest red sin trap urge vest whale box yes zip'.split()
+alpha_alt = 'air bat cap die each fail gone harm sit jury crash look mad near odd pit quest red soon trap urge vest whale box yes zip'.split()
 alnum = list(zip(alpha_alt, string.ascii_lowercase)) + [(str(i), str(i)) for i in range(0, 10)]
 
 alpha = {}
@@ -225,7 +225,7 @@ keymap.update({
     'go <dgndictation> [over]': text,
     'word <dgnwords>': word,
 
-    'sentence <dgndictation> [over]': sentence_text,
+    # 'sentence <dgndictation> [over]': sentence_text,
     'sent <dgndictation> [over]': sentence_text,
     'champ <dgndictation> [over]': sentence_text,
 
@@ -233,7 +233,7 @@ keymap.update({
     'period <dgndictation> [over]': ['. ', sentence_text],
     'more <dgndictation> [over]': [' ', text],
 
-    'code <dgndictation> [over]': [text, ' '],
+    'vein <dgndictation> [over]': [text, ' '],
 
     '(%s)+ <dgndictation>' % (' | '.join(formatters)): FormatText,
 
@@ -306,6 +306,7 @@ keymap.update({
     'block': ['{}', Key('left enter enter up tab')],
     'empty array': '[]',
     'empty dict': '{}',
+    'empty type': ['<>', Key('left')],
 
     'state (def | deaf | deft)': 'def ',
     'state else if': 'elif ',
