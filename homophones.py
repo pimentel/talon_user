@@ -7,8 +7,15 @@ from talon.voice import Word, Key, Context, Str, press
 context = Context('homophones')
 
 homophones = [
-    ['one', 'won'],
-    ['two', 'too', 'to'],
+    ['1', 'one', 'won'],
+    ['2', 'two', 'too', 'to'],
+    ['3', 'three'],
+    ['4', 'for', 'four', 'fore'],
+    ['5', 'five'],
+    ['6', 'six'],
+    ['7', 'seven'],
+    ['8', 'eight'],
+    ['9', 'nine'],
     ["I'll", 'aisle', 'isle'],
     ['awful', 'offal'],
     ['ad', 'add'],
@@ -78,7 +85,6 @@ def run_homophones(vg, w, h):
 pick_context = Context('pick')
 
 def close_homophones():
-    global pick_context
     pick_context.unload()
     app.unregister('overlay', run_homophones)
 
@@ -97,9 +103,14 @@ def raise_homophones(m):
     global pick_context
     global active_word_list
 
-    print('length: ', len(m._words))
+
+    # if hasattr(m, 'dgndictation') and len(m.dgndictation[0]._words) > 0:
     if len(m._words) > 1:
-        word = str(m.dgndictation[0]._words[0])
+        if hasattr(m, 'dgndictation'):
+            word = str(m.dgndictation[0]._words[0])
+        else:
+            # deal with the 1, 2, ... case
+            word = str(m._words[1])
     else:
         word = get_selection()
 
@@ -119,12 +130,15 @@ def raise_homophones(m):
     pick_context.keymap(keymap)
     pick_context.load()
 
-context.keymap({
+keymap = {
     # Usage:
     # 'homophones word' to look up those homophones.
     # when the list pops up, say appropriate number or zero (leave and do nothing).
     # can also call 'homophones' without any arguments.
     # it will look at the selected text and look that up.
     'homophones [<dgndictation>]': raise_homophones,
-    })
+    }
+keymap.update({'homophones %d' % i : raise_homophones for i in range(10)})
+
+context.keymap(keymap)
 

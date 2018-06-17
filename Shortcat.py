@@ -10,7 +10,7 @@ def run_shortcat(m):
     sleep(0.1)
     if len(m._words) > 1:
         words = list(map(str, m.dgndictation[0]._words))
-        words = ' '.join(words)
+        words = ''.join(words)
         print(words)
         Str(words)(None)
     else:
