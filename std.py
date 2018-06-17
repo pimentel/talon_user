@@ -223,7 +223,7 @@ keymap.update(alpha)
 keymap.update({
     # 'phrase <dgndictation> [over]': text,
     'go <dgndictation> [over]': text,
-    'word <dgnwords>': word,
+    # 'word <dgnwords>': word,
 
     # 'sentence <dgndictation> [over]': sentence_text,
     'sent <dgndictation> [over]': sentence_text,
@@ -351,7 +351,7 @@ keymap.update({
 
     'armin': ' -',
     'longarmin': ' --',
-    
+
     'call': '()',
     'indirect': '&',
     'dereference': '*',

@@ -60,7 +60,13 @@ keymap = {
     'doom way': Key('cmd-down'),
     'jeep way': Key('cmd-up'),
 
+    # zooming
+    'zoom in': Key('cmd-='),
+    'zoom out': Key('cmd--'),
+    'zoom normal': Key('cmd-0'),
+
     # selecting
+    'select all': Key('cmd-a'),
     'snatch': Key('cmd-x'),
     'shackle': [Key('cmd-left'), Key('shift-cmd-right')],
     'stoosh': Key('cmd-c'),

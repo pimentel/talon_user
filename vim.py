@@ -16,5 +16,7 @@ ctx.keymap({
     'pain horizontal': [Key('escape'), ':split\n'],
 
     'run (back | ack)': [':Ack! -i \'\'', Key('left')],
+    'fuzzy find': ':FZF\n',
+    'kill buffer': ':BD',
     # 'lead': ',',
 })
