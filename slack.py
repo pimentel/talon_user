@@ -7,7 +7,8 @@ keymap = {
     'channel up': Key('alt-up'),
     'channel down': Key('alt-down'),
     '(highlight command | insert command)': ['``', Key('left')],
-    '(highlight code | insert code)': ['``````', Key('left left left')],
+    '(highlight code | insert code)': ['``````', Key('left left left'),
+                                       Key('shift-return'), Key('shift-return'), Key('up')],
 }
 
 ctx.keymap(keymap)
