@@ -6,6 +6,7 @@ from user.utils import parse_words_as_integer
 # https://vimium.github.io/
 
 websites = {
+    'calendar': 'https://calendar.google.com',
     'facebook': 'https://facebook.com',
     'twitter': 'https://twitter.com',
     'trello': 'https://trello.com',
@@ -24,7 +25,11 @@ def open_website(m):
     w = websites.get(name)
     code = r'''
     tell application "Google Chrome"
-	set t to make new tab at end of tabs of window 1
+	if title of active tab of window 1 is "New Tab" then
+            set t to active tab of window 1
+	else
+            set t to make new tab at end of tabs of window 1
+	end if
 	set URL of t to "%s"
     end tell
     ''' % w

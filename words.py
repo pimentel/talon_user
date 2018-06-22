@@ -10,7 +10,7 @@ keymap = {
 
     'word no': 'null',
     'yeller no': 'NULL',
-    
+
     'word dup': 'dup',
     'word streak': ['streq()', Key('left')],
     'word printf': 'printf',
@@ -53,13 +53,15 @@ keymap = {
     # bio words
     'word snip': 'snp',
     'title snip': 'SNP',
-    'word Q T L': 'qtl',
-    'title Q T L': 'QTL',
+    'word QTL': 'qtl',
+    'title QTL': 'QTL',
     'word transcript import': 'tximport',
     'word seek': 'seq',
     'title seek': 'Seq',
     'word attack': 'atac',
     'title attack': 'ATAC',
+    'word geo': 'geuvadis',
+    'title geo': 'GEUVADIS',
 
     'shrink ensemble': 'ensembl',
 

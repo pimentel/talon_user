@@ -36,6 +36,7 @@ homophones = [
     ['Jean', 'gene'],
     ['jeans', 'genes'],
     ['meet', 'meat'],
+    ['right', 'write', 'rite'],
     ['pool', 'pull'],
     ["there", "they're", "their"],
     ['where', 'wear'],

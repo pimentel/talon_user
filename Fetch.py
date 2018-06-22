@@ -10,4 +10,7 @@ ctx.keymap({
     'forward': Key('cmd-]'),
     'edit file': Key('cmd-j'),
     'open': Key('cmd-o'),
-    })
+    # 'reload tab': Key('cmd-r'),
+    'delete file': Key('cmd-delete'),
+    'stop': Key('cmd-.'),
+})

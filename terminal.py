@@ -2,8 +2,7 @@ from talon.voice import Word, Key, Context, Str
 import string
 
 terminals = ('com.apple.Terminal', 'com.googlecode.iterm2')
-ctx = Context('terminal', func=lambda app, win: any(
-    t in app.bundle for t in terminals))
+ctx = Context('terminal', func=lambda app, win: any(t in app.bundle for t in terminals))
 
 keymap = {
     'cd': ['cd ; ls', Key('left'), Key('left'), Key('left'), Key('left')],
@@ -74,15 +73,21 @@ keymap = {
     'run brew': 'brew ',
     'run brew tap': 'brew tap ',
     'run brew search': 'brew search ',
-    'run brew upgrade': 'brew upgrade ',
+    'run brew upgrade': 'brew update; brew upgrade; brew cask upgrade\n',
     'run brew update': 'brew update ',
+    'run brew info': 'brew info ',
     'run brew install': 'brew install ',
+    'run brew uninstall': 'brew uninstall ',
+
+    'run cask': 'brew cask ',
+    'run cask info': 'brew cask info ',
     'run cask install': 'brew cask install ',
+    'run cask uninstall': 'brew cask uninstall ',
     'run cask search': 'brew cask search ',
 
     'run stow': 'stow ',
 
-    'run interactive': ['sdev -p pritch -t 2:00:00 -m 16GB', Key('left'), Key('left')],
+    'run interactive': ['sdev -p pritch -t 4:00:00 -m 16GB', Key('left'), Key('left')],
     'run SQ': 'squeue -u $USER\n',
 
     # snakemake
@@ -94,11 +99,15 @@ keymap = {
     'pain up': [Key('ctrl-b'), Key('up')],
     'pain down': [Key('ctrl-b'), Key('down')],
 
+    'page up': [Key('shift-pageup')],
+    'page down': [Key('shift-pagedown')],
+
     'snipple': [Key('ctrl-a'), Key('ctrl-k')],
     'kite': [Key('esc'), Key('d')],
     'trough': [Key('ctrl-w')],
     'tools oedipus': [Key('ctrl-x'), Key('ctrl-e')],
 
+    'snipline': [Key('ctrl-a'), Key('ctrl-k')],
     'window clear': Key('cmd-k'),
 
     'find here': ['find . -name \'\'', Key('left')],

@@ -229,6 +229,8 @@ keymap.update({
     'sent <dgndictation> [over]': sentence_text,
     'champ <dgndictation> [over]': sentence_text,
 
+    'menu [<dgndictation>] [over]': [Key('ctrl-f2'), text, Key('down')],
+
     'comma <dgndictation> [over]': [', ', text],
     'period <dgndictation> [over]': ['. ', sentence_text],
     'more <dgndictation> [over]': [' ', text],
@@ -303,7 +305,7 @@ keymap.update({
 
     'args': ['()', Key('left')],
     'index': ['[]', Key('left')],
-    'block': ['{}', Key('left enter enter up tab')],
+    # 'block': ['{}', Key('left enter enter up tab')],
     'empty array': '[]',
     'empty dict': '{}',
     'empty type': ['<>', Key('left')],
@@ -389,5 +391,10 @@ keymap.update({
     '[(op | logical | bitwise)] (right shift | shift right) equals': ' >>= ',
 
     'shebang bash': '#!/bin/bash -u\n',
+
+    # commonly misrecognized phrases
+    'smash row names': 'rownames',
+    'near smash row': 'nrow',
+    'dotsway row names': 'row.names',
 })
 ctx.keymap(keymap)
