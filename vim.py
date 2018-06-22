@@ -17,10 +17,10 @@ def search_reverse(m):
 ctx.keymap({
     'trough': Key('ctrl-w'),
 
-    # assumes you are in insert mode
+    # insert mode
     'insert code': ['```', Key('return')],
 
-    # assumes you are in normal mode
+    # normal mode
     'vip': 'vip',
     'pain left': [Key('ctrl-w'), Key('h')],
     'pain right': [Key('ctrl-w'), Key('l')],
@@ -30,6 +30,10 @@ ctx.keymap({
     'pain horizontal': [Key('escape'), ':split\n'],
     'send pair': [Key('ctrl-c'), Key('ctrl-c')],
 
+    # fzf.vim
+    'list buffers': ':Buffers\n',
+    'list files': ':Files\n',
+
     'crew <dgndictation>': search_forward,
     'trail <dgndictation>': search_reverse,
 
@@ -37,4 +41,7 @@ ctx.keymap({
     'fuzzy find': ':FZF\n',
     'kill buffer': ':BD',
     # 'lead': ',',
+
+    # phrases that get misrecognized commonly
+    'champ obsess': 'Obsess',
 })

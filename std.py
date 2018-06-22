@@ -38,14 +38,14 @@ numerals = {
     # 'seventeen': '17',
     # 'eighteen': '18',
     # 'nineteen': '19',
-    'twenty': '20',
-    'thirty': '30',
-    'forty': '40',
-    'fifty': '50',
-    'sixty': '60',
-    'seventy': '70',
-    'eighty': '80',
-    'ninety': '90',
+    # 'twenty': '20',
+    # 'thirty': '30',
+    # 'forty': '40',
+    # 'fifty': '50',
+    # 'sixty': '60',
+    # 'seventy': '70',
+    # 'eighty': '80',
+    # 'ninety': '90',
     'hundred': '00',
     'thousand': '000',
     'million': '000000',
@@ -81,7 +81,7 @@ prefix_mapping = set([
 ])
 
 def parse_word(word):
-    word = str(word)
+    # word = str(word)
     # print('"', word, '"')
     if word in token_replace:
         word = token_replace.get(word)
@@ -101,8 +101,15 @@ def join_words(words, sep=' '):
         out += word
     return out
 
+def split_words(m):
+    words = map(str, m.dgndictation[0]._words)
+    words = [str(w).split() for w in words]
+    words = sum(words, [])
+    return words
+
 def parse_words(m):
-    return list(map(parse_word, m.dgndictation[0]._words))
+    words = split_words(m)
+    return list(map(parse_word, words))
 
 def insert(s):
     Str(s)(None)
@@ -144,9 +151,9 @@ formatters = {
     'spine':  (True,  lambda i, word, _: word if i == 0 else '-'+word),
     'title':  (False, lambda i, word, _: word.capitalize()),
     # 'allcaps': (False, lambda i, word, _: word.upper()),
-    'dubstring': (False, surround('"')),
-    'string': (False, surround("'")),
-    'padded': (False, surround(" ")),
+    # 'dubstring': (False, surround('"')),
+    # 'string': (False, surround("'")),
+    # 'padded': (False, surround(" ")),
     'rot thirteen':  (False, rot13),
 
     'pathway':  (True, lambda i, word, _: word if i == 0 else '/'+word),
@@ -239,6 +246,7 @@ keymap.update({
 
     '(%s)+ <dgndictation>' % (' | '.join(formatters)): FormatText,
 
+    'padded': ['  ', Key('left')],
     'shock': Key('enter'),
     'risk': Key('esc'),
     'question [mark]': '?',
@@ -308,7 +316,8 @@ keymap.update({
     # 'block': ['{}', Key('left enter enter up tab')],
     'empty array': '[]',
     'empty dict': '{}',
-    'empty type': ['<>', Key('left')],
+
+    'op tag': ['<>', Key('left')],
 
     'state (def | deaf | deft)': 'def ',
     'state else if': 'elif ',

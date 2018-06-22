@@ -48,7 +48,8 @@ keymap = {
     'trough': Key('alt-backspace'),
 
     # moving
-    '(tab | tarp)': Key('tab'),
+    # '(tab | tarp)': Key('tab'),
+    'tarp': Key('tab'),
     'tarsh': Key('shift-tab'),
     'slap': [Key('cmd-right enter')],
     'peg': Key('alt-left'),
