@@ -1,3 +1,4 @@
+from os import system
 from talon.voice import Context, Key
 
 ctx = Context('navigation')
@@ -10,6 +11,10 @@ keymap = {
 
     'close tab': Key('cmd-w'),
     'close window': Key('cmd-shift-w'),
+
+    'mission': lambda m: system('open -a \'Mission Control\''),
+    'show windows': Key('ctrl-down'),
+    'curtail': Key('cmd-m'),
 
     '(next window | gibby)': Key('cmd-`'),
     '(last window | shibby)': Key('cmd-shift-`'),
@@ -55,6 +60,7 @@ keymap = {
     'peg': Key('alt-left'),
     'fran': Key('alt-right'),
     'ricky': Key('cmd-right'),
+    'derek': Key('cmd-right space'),
     'lefty': Key('cmd-left'),
     'jeep': Key('up'),
     'lloyd':  Key('left'),

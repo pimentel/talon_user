@@ -26,6 +26,6 @@ class Logger:
                     log_file.write('%s\n' % ' '.join(m['phrase']))
 
 
-logger = Logger()
-engine.register('phrase', logger.on_phrase)
+# logger = Logger()
+# engine.register('phrase', logger.on_phrase)
 

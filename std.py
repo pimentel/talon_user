@@ -81,7 +81,7 @@ prefix_mapping = set([
 ])
 
 def parse_word(word):
-    # word = str(word)
+    word = str(word)
     # print('"', word, '"')
     if word in token_replace:
         word = token_replace.get(word)
@@ -104,11 +104,13 @@ def join_words(words, sep=' '):
 def split_words(m):
     words = map(str, m.dgndictation[0]._words)
     words = [str(w).split() for w in words]
+    print('THESE ARE THE WORDS: %s' % words)
     words = sum(words, [])
     return words
 
 def parse_words(m):
-    words = split_words(m)
+    # words = split_words(m)
+    words = m.dgndictation[0]._words
     return list(map(parse_word, words))
 
 def insert(s):
@@ -160,7 +162,7 @@ formatters = {
     'dotsway':  (True, lambda i, word, _: word if i == 0 else '.'+word),
     'yellsnik':  (True, lambda i, word, _: word.capitalize() if i == 0 else '_'+word.capitalize()),
     # 'champ': (True, lambda i, word, _: word.capitalize() if i == 0 else " "+word),
-    'criff': (True, lambda i, word, _: word.capitalize()),
+    'chief': (True, lambda i, word, _: word.capitalize()),
     'yeller': (False, lambda i, word, _: word.upper()),
     'thrack': (False, lambda i, word, _: word[0:3]),
     'quattro': (False, lambda i, word, _: word[0:4]),
@@ -402,6 +404,10 @@ keymap.update({
     'shebang bash': '#!/bin/bash -u\n',
 
     # commonly misrecognized phrases
+    # mostly talon
+    'champ key': 'Key',
+
+    # R
     'smash row names': 'rownames',
     'near smash row': 'nrow',
     'dotsway row names': 'row.names',

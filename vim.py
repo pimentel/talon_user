@@ -28,7 +28,13 @@ ctx.keymap({
     'pain up': [Key('ctrl-w'), Key('k')],
     'pain vertical': [Key('escape'), ':vsplit\n'],
     'pain horizontal': [Key('escape'), ':split\n'],
-    'send pair': [Key('ctrl-c'), Key('ctrl-c')],
+
+    # vim-slime
+    'send slime': [Key('ctrl-c'), Key('ctrl-c')],
+    # normal mode
+    'send function': ':call RSendFunctionSlime()\n',
+    'send line': ':call RSendLineSlime()\n',
+    'reset slime': Key('ctrl-c v'),
 
     # fzf.vim
     'list buffers': ':Buffers\n',
@@ -37,8 +43,8 @@ ctx.keymap({
     'crew <dgndictation>': search_forward,
     'trail <dgndictation>': search_reverse,
 
-    'run (back | ack)': [':Ack! -i \'\'', Key('left')],
-    'fuzzy find': ':FZF\n',
+    'run (back | ack)': [':Ack! -S \'\'', Key('left')],
+    # 'fuzzy find': ':FZF\n',
     'kill buffer': ':BD',
     # 'lead': ',',
 
