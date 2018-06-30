@@ -72,7 +72,7 @@ token_replace = {
     'meta-\\\\meta': 'meta',
     'multi-\\\\multi': 'multi',
 
-    'jean': 'gene',
+    'Jean': 'gene',
     'jeans': 'genes',
 }
 
@@ -149,6 +149,7 @@ formatters = {
     'cram':  (True,  lambda i, word, _: word if i == 0 else word.capitalize()),
     'snake':  (True,  lambda i, word, _: word if i == 0 else '_'+word),
     'smash':  (True,  lambda i, word, _: word),
+    'snitch': (True, lambda i, word, _: word[0]),
     # spinal or kebab?
     'spine':  (True,  lambda i, word, _: word if i == 0 else '-'+word),
     'title':  (False, lambda i, word, _: word.capitalize()),

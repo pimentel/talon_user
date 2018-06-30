@@ -18,6 +18,7 @@ ctx.keymap({
     'trough': Key('ctrl-w'),
 
     # insert mode
+    # assumes you have AutoPair installed
     'insert code': ['```', Key('return')],
 
     # normal mode
@@ -28,6 +29,7 @@ ctx.keymap({
     'pain up': [Key('ctrl-w'), Key('k')],
     'pain vertical': [Key('escape'), ':vsplit\n'],
     'pain horizontal': [Key('escape'), ':split\n'],
+    'resize window': Key('ctrl-w ='),
 
     # vim-slime
     'send slime': [Key('ctrl-c'), Key('ctrl-c')],
@@ -43,7 +45,7 @@ ctx.keymap({
     'crew <dgndictation>': search_forward,
     'trail <dgndictation>': search_reverse,
 
-    'run (back | ack)': [':Ack! -S \'\'', Key('left')],
+    'run (search | silver)': [':Ack! -S \'\'', Key('left')],
     # 'fuzzy find': ':FZF\n',
     'kill buffer': ':BD',
     # 'lead': ',',

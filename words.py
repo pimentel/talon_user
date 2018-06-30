@@ -8,18 +8,24 @@ keymap = {
     'word bson': 'bson',
     'word iter': 'iter',
 
+    'word sink': 'sync',
+    'word in it': 'init',
+
     'word no': 'null',
+    'title no': 'Null',
     'yeller no': 'NULL',
 
-    'word dup': 'dup',
-    'word streak': ['streq()', Key('left')],
-    'word printf': 'printf',
     'word (dickt | dictionary)': 'dict',
-    'word shell': 'shell',
-    'word get': 'git',
+    'word dup': 'dup',
     'word get hub': 'github',
+    'word get': 'git',
+    'word macvim': 'macvim',
+    'word printf': 'printf',
+    'word shell': 'shell',
+    'word streak': ['streq()', Key('left')],
     'word them': 'vim',
     'word vim': 'vim',
+    'word neo': 'neovim',
 
     'word stood in': 'stdin',
     'word stood out': 'stdout',
@@ -47,6 +53,9 @@ keymap = {
     'word son': 'avi',
     'title son': 'Avi',
     'word kyle': 'lior',
+    'title kyle': 'Lior',
+    'word paul': 'pall',
+    'title paul': 'Pall',
     'word bays': 'bayes',
     'title bays': 'Bayes',
 
@@ -55,6 +64,10 @@ keymap = {
     'title snip': 'SNP',
     'word QTL': 'qtl',
     'title QTL': 'QTL',
+    'word EQTL': 'eqtl',
+    'title EQTL': 'eQTL',
+    'word IRQTL': 'irqtl',
+    'title IRQTL': 'irQTL',
     'word transcript import': 'tximport',
     'word seek': 'seq',
     'title seek': 'Seq',
@@ -68,7 +81,6 @@ keymap = {
     # R
     'word plier': 'dplyr',
 
-    # 'word lunixbochs': 'lunixbochs',
     'word talon': 'talon',
     # 'word Point2d': 'Point2d',
     # 'word Point3d': 'Point3d',
@@ -89,16 +101,18 @@ keymap.update({
     '(insert (our | are))': ['```{r}\n\n```', Key('up')],
 })
 
-keymap.update({
-    'math towel': 'tao',
-    'math chai': 'chi',
-    'math row': 'rho',
-    'math sigh': 'psi',
-    'math some': 'sum',
-    'math root': 'sqrt',
-    'math empirical': 'ecdf',
-    'math poison': 'poisson',
-    'math pie': 'pi',
-})
+# keymap.update({
+#     'math tao': 'tao',
+#     'math chai': 'chi',
+#     'math row': 'rho',
+#     'math sigh': 'psi',
+#     'math some': 'sum',
+#     'math root': 'sqrt',
+#     'math empirical': 'ecdf',
+#     'math poison': 'poisson',
+#     'math fee': 'phi',
+#     'math mew': 'mu',
+#     'math pie': 'pi',
+# })
 
 ctx.keymap(keymap)

@@ -6,7 +6,7 @@ ctx = Context('terminal', func=lambda app, win: any(t in app.bundle for t in ter
 
 keymap = {
     'cd': ['cd ; ls', Key('left'), Key('left'), Key('left'), Key('left')],
-    'cd back': 'cd -; ls2\n',
+    'cd back': 'cd -; ls\n',
     'cd develop': 'cd ~/dev; ls\n',
     'cd home': 'cd ~; ls\n',
     'cd up': 'cd ..; ls\n',
@@ -33,9 +33,10 @@ keymap = {
     'run socks': 'ssh -D localhost:2020 ',
     'run grep': 'grep ',
     'run (back | ack)': 'ack ',
+    'run (search | silver)': 'ag ',
     'run hawk': 'awk ',
     'run copy': 'cp -rf ',
-    'run sink': 'rsync -ravh',
+    'run sink': 'rsync -ravh ',
     'run make': 'mkdir -p ',
     'run see make': 'cmake ..',
     'run pseudo-': 'sudo ',
@@ -45,6 +46,13 @@ keymap = {
     'run remove': 'rm ',
     'run remove force': 'rm -rf ',
     'run top': 'htop\n',
+    'run symbolic': 'ln -s ',
+    'run permissions': 'chmod 755 ',
+    'run gzip': 'gzip ',
+    'run gunzip':  'gunzip ',
+    'run untar': 'tar -xvf ',
+    'run tar': 'tar -cvf ',
+    'run neo': 'nvim ',
 
     'run get': 'git ',
     'run get (R M | remove)': 'git rm ',
@@ -99,8 +107,8 @@ keymap = {
     'pain up': [Key('ctrl-b'), Key('up')],
     'pain down': [Key('ctrl-b'), Key('down')],
 
-    'page up': [Key('shift-pageup')],
-    'page down': [Key('shift-pagedown')],
+    # 'page up': [Key('shift-pageup')],
+    # 'page down': [Key('shift-pagedown')],
 
     'snipple': [Key('ctrl-a'), Key('ctrl-k')],
     'kite': [Key('esc'), Key('d')],
@@ -116,6 +124,7 @@ keymap = {
     'run sq': 'squeue -u $USER\n',
     'run df': 'df -h\n',
     'run secure': 'ssh ',
+    'run our studio': 'sh_rstudio -p pritch,normal\n',
 }
 
 ctx.keymap(keymap)

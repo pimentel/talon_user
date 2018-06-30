@@ -6,9 +6,9 @@ keymap = {
     'channel': Key('cmd-k'),
     'channel up': Key('alt-up'),
     'channel down': Key('alt-down'),
-    '(highlight command | insert command)': ['``', Key('left')],
-    '(highlight code | insert code)': ['``````', Key('left left left'),
-                                       Key('shift-return'), Key('shift-return'), Key('up')],
+    'insert command': ['``', Key('left')],
+    'insert code': ['``````', Key('left left left'),
+                    Key('shift-return'), Key('shift-return'), Key('up')],
 }
 
 ctx.keymap(keymap)
