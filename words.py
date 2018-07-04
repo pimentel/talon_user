@@ -8,12 +8,21 @@ keymap = {
     'word bson': 'bson',
     'word iter': 'iter',
 
+    'word pain': 'pane',
+    'word pains': 'panes',
     'word sink': 'sync',
     'word in it': 'init',
+    'word lint': 'lint',
+    'title lint': 'Lint',
+    'word linter': 'linter',
+    'title linter': 'Linter',
 
-    'word no': 'null',
-    'title no': 'Null',
-    'yeller no': 'NULL',
+    'word noel': 'null',
+    'title noel': 'Null',
+    'yeller noel': 'NULL',
+
+    'word gutentags': 'gutentags',
+    'title Gutentags': 'Gutentags',
 
     'word (dickt | dictionary)': 'dict',
     'word dup': 'dup',
@@ -24,6 +33,8 @@ keymap = {
     'word shell': 'shell',
     'word streak': ['streq()', Key('left')],
     'word them': 'vim',
+    'word tmux': 'tmux',
+    'yeller tmux': 'TMUX',
     'word vim': 'vim',
     'word neo': 'neovim',
 
@@ -38,6 +49,7 @@ keymap = {
     'shrink parameter': 'param',
     'shrink parameters': 'params',
 
+    'word shake file': 'snakefile',
     'title shake file': 'Snakefile',
     'word shake make': 'snakemake',
     'word latex make': 'latexmk',
@@ -52,8 +64,8 @@ keymap = {
     'title wife': 'Puente',
     'word son': 'avi',
     'title son': 'Avi',
-    'word kyle': 'lior',
-    'title kyle': 'Lior',
+    'word lior': 'lior',
+    'title lior': 'Lior',
     'word paul': 'pall',
     'title paul': 'Pall',
     'word bays': 'bayes',
@@ -68,9 +80,9 @@ keymap = {
     'title EQTL': 'eQTL',
     'word IRQTL': 'irqtl',
     'title IRQTL': 'irQTL',
-    'word transcript import': 'tximport',
     'word seek': 'seq',
     'title seek': 'Seq',
+    'yeller seek': 'SEQ',
     'word attack': 'atac',
     'title attack': 'ATAC',
     'word geo': 'geuvadis',
@@ -94,6 +106,7 @@ keymap = {
 
     # weird tech words
     'word trello': 'trello',
+    'word presto': 'prezto',
 }
 
 keymap.update({

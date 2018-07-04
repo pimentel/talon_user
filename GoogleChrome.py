@@ -12,6 +12,7 @@ websites = {
     'trello': 'https://trello.com',
     'gmail': 'https://gmail.com',
     'get hub': 'https://github.com',
+    'reddit': 'https://reddit.com',
     'talon docs': 'https://github.com/dwighthouse/unofficial-talonvoice-docs',
     'talon official docs': 'https://talonvoice.com/docs/index.html',
 }
@@ -19,6 +20,7 @@ websites = {
 context = Context('GoogleChrome', bundle='com.google.Chrome')
 
 context.set_list('websites', websites.keys())
+
 
 def open_website(m):
     name = str(m._words[1])
@@ -35,10 +37,11 @@ def open_website(m):
     ''' % w
     applescript.run(code)
 
+
 keymaps = {
-  'back': Key('cmd-['),
-  'forward': Key('cmd-]'),
-  'website {GoogleChrome.websites}': open_website,
+    'back': Key('cmd-['),
+    'forward': Key('cmd-]'),
+    'website {GoogleChrome.websites}': open_website,
 }
 
 context.keymap(keymaps)

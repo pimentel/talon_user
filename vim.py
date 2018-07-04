@@ -2,17 +2,22 @@ from talon.voice import Word, Context, Key, Rep, Str, press
 
 ctx = Context('vim', bundle='org.vim.MacVim')
 
+
 def search_forward(m):
     press('/')
     w = str(m.dgndictation[0]._words[0])
+    w = w.lower()
     Str(w)(None)
     press('return')
+
 
 def search_reverse(m):
     press('?')
     w = str(m.dgndictation[0]._words[0])
+    w = w.lower()
     Str(w)(None)
     press('enter')
+
 
 ctx.keymap({
     'trough': Key('ctrl-w'),
@@ -46,7 +51,6 @@ ctx.keymap({
     'trail <dgndictation>': search_reverse,
 
     'run (search | silver)': [':Ack! -S \'\'', Key('left')],
-    # 'fuzzy find': ':FZF\n',
     'kill buffer': ':BD',
     # 'lead': ',',
 

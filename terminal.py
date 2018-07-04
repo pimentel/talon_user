@@ -1,11 +1,19 @@
-from talon.voice import Word, Key, Context, Str
+from talon.voice import Word, Key, Context, Str, press
 import string
 
 terminals = ('com.apple.Terminal', 'com.googlecode.iterm2')
-ctx = Context('terminal', func=lambda app, win: any(t in app.bundle for t in terminals))
+ctx = Context('terminal', func=lambda app, win:
+              any(t in app.bundle for t in terminals))
+
+
+def tmux_window(m):
+    window = str(m._words[1])
+    press('ctrl-b')
+    press(window)
+
 
 keymap = {
-    'cd': ['cd ; ls', Key('left'), Key('left'), Key('left'), Key('left')],
+    'cd': ['cd ; ls', Key('left left left left')],
     'cd back': 'cd -; ls\n',
     'cd develop': 'cd ~/dev; ls\n',
     'cd home': 'cd ~; ls\n',
@@ -14,7 +22,10 @@ keymap = {
     'cd talon home': 'cd ~/.talon; ls\n',
     'cd talon user': 'cd ~/.talon/user; ls\n',
     'run talon log': 'tail -f ~/.talon/talon.log\n',
+    'run talon terminal': '~/.talon/.venv/bin/repl\n',
 
+    'run tmux': 'tmux ',
+    'run tmux load': 'tmuxp load ',
     'mux new': 'tmux new -s ',
     'mux attach': 'tmux attach -t ',
     'mux list': 'tmux ls\n',
@@ -22,13 +33,16 @@ keymap = {
     'mux vertical': [Key('ctrl-b'), '%'],
     'mux leave': [Key('ctrl-b'), Key('d')],
     'mux scroll': [Key('ctrl-b'), Key('[')],
+    'win (%s)+' % (' | '.join(map(str, range(10)))): tmux_window,
+    'switch session': Key('ctrl-b s'),
+    'toggle session': Key('f12'),
 
     'run cat': 'cat ',
     'run less': 'less ',
     'run list': 'ls\n',
     'run list all': 'ls -lah ',
     'run list long': 'ls -lh ',
-    'run get voice': ['git commit -am \' #talon\'', Key('alt-left'), Key('left')],
+    'run get voice': ['git commit -am \' #talon\'', Key('alt-left left')],
     'run bib': 'bibtex ',
     'run socks': 'ssh -D localhost:2020 ',
     'run grep': 'grep ',
@@ -49,10 +63,11 @@ keymap = {
     'run symbolic': 'ln -s ',
     'run permissions': 'chmod 755 ',
     'run gzip': 'gzip ',
-    'run gunzip':  'gunzip ',
+    'run gunzip': 'gunzip ',
     'run untar': 'tar -xvf ',
     'run tar': 'tar -cvf ',
     'run neo': 'nvim ',
+    'run macvim': 'mvim ',
 
     'run get': 'git ',
     'run get (R M | remove)': 'git rm ',
@@ -95,7 +110,7 @@ keymap = {
 
     'run stow': 'stow ',
 
-    'run interactive': ['sdev -p pritch -t 4:00:00 -m 16GB', Key('left'), Key('left')],
+    'run interactive': ['sdev -p pritch -t 4:00:00 -m 16GB', Key('left left')],
     'run SQ': 'squeue -u $USER\n',
 
     # snakemake

@@ -1,19 +1,25 @@
 from talon.voice import Word, Context, Key, Rep, RepPhrase, Str, press
 from talon import ctrl
 from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
+
 import string
 
-alpha_alt = 'air bat cap die each fail gone harm sit jury crash look mad near odd pit quest red soon trap urge vest whale box yes zip'.split()
-alnum = list(zip(alpha_alt, string.ascii_lowercase)) + [(str(i), str(i)) for i in range(0, 10)]
+# another possibility for p: pig
+alpha_alt = 'air bat cap die each fail gone harm sit jury crash look mad '\
+    'near odd per quest red soon trap urge vest whale box yes zip'.split()
+alnum = list(zip(alpha_alt, string.ascii_lowercase)) + \
+    [(str(i), str(i)) for i in range(0, 10)]
 
 alpha = {}
 # alpha.update(dict(alnum))
 
 extra_modifier_key_targets = {'left':'left','right':'right','up':'up','down':'down','minus':'-','plus':'+','(return|enter)':'enter','slash':'/','delete':'backspace','space':'space','index right':']','index left':'[','escape':'esc'}
+
 for (k, v) in extra_modifier_key_targets.items():
     alnum.append((k, v))
 
-alpha.update({'ship %s' % word: letter for word, letter in zip(alpha_alt, string.ascii_uppercase)})
+alpha.update({'ship %s' % word: letter for word, letter in
+              zip(alpha_alt, string.ascii_uppercase)})
 
 alpha.update({'troll %s' % k: Key('ctrl-%s' % v) for k, v in alnum})
 alpha.update({'coof %s' % k: Key('cmd-%s' % v) for k, v in alnum})
@@ -22,10 +28,14 @@ alpha.update({'alt %s' % k: Key('alt-%s' % v) for k, v in alnum})
 
 alpha.update({'troll ship %s' % k: Key('ctrl-shift-%s' % v) for k, v in alnum})
 alpha.update({'troll option %s' % k: Key('ctrl-alt-%s' % v) for k, v in alnum})
-alpha.update({'command control %s' % k: Key('cmd-ctrl-%s' % v) for k, v in alnum})
-alpha.update({'command option %s' % k: Key('cmd-alt-%s' % v) for k, v in alnum})
-alpha.update({'option %s' % k: Key('alt-%s' % v) for k, v in alnum})
-alpha.update({'option shift %s' % k: Key('alt-shift-%s' % v) for k, v in alnum})
+alpha.update({'command control %s' % k: Key('cmd-ctrl-%s' % v)
+              for k, v in alnum})
+alpha.update({'command option %s' % k: Key('cmd-alt-%s' % v)
+              for k, v in alnum})
+alpha.update({'option %s' % k: Key('alt-%s' % v)
+              for k, v in alnum})
+alpha.update({'option shift %s' % k: Key('alt-shift-%s' % v)
+              for k, v in alnum})
 
 numerals = {
     'ten': '10',
@@ -80,6 +90,7 @@ prefix_mapping = set([
     'intron'
 ])
 
+
 def parse_word(word):
     word = str(word)
     # print('"', word, '"')
@@ -91,6 +102,7 @@ def parse_word(word):
     word = mapping.get(word, word)
     return word
 
+
 def join_words(words, sep=' '):
     out = ''
     for i, word in enumerate(words):
@@ -101,6 +113,7 @@ def join_words(words, sep=' '):
         out += word
     return out
 
+
 def split_words(m):
     words = map(str, m.dgndictation[0]._words)
     words = [str(w).split() for w in words]
@@ -108,33 +121,43 @@ def split_words(m):
     words = sum(words, [])
     return words
 
+
 def parse_words(m):
     # words = split_words(m)
     words = m.dgndictation[0]._words
     return list(map(parse_word, words))
 
+
 def insert(s):
     Str(s)(None)
+
 
 def text(m):
     insert(join_words(parse_words(m)))
 
+
 def sentence_text(m):
     insert(join_words(capitalize(parse_words(m))))
 
+
 def capitalize(words):
     return [words[0].capitalize()] + words[1:]
+
 
 def word(m):
     text = join_words(list(map(parse_word, m.dgnwords[0]._words)))
     insert(text.lower())
 
+
 def surround(by):
     def func(i, word, last):
-        if i == 0: word = by + word
-        if last: word += by
+        if i == 0:
+            word = by + word
+        if last:
+            word += by
         return word
     return func
+
 
 def rot13(i, word, _):
     out = ''
@@ -144,30 +167,32 @@ def rot13(i, word, _):
         out += c
     return out
 
+
 formatters = {
-    'dunder': (True,  lambda i, word, _: '__%s__' % word if i == 0 else word),
-    'cram':  (True,  lambda i, word, _: word if i == 0 else word.capitalize()),
-    'snake':  (True,  lambda i, word, _: word if i == 0 else '_'+word),
-    'smash':  (True,  lambda i, word, _: word),
+    'dunder': (True, lambda i, word, _: '__%s__' % word if i == 0 else word),
+    'cram': (True, lambda i, word, _: word if i == 0 else word.capitalize()),
+    'snake': (True, lambda i, word, _: word if i == 0 else '_' + word),
+    'smash': (True, lambda i, word, _: word),
     'snitch': (True, lambda i, word, _: word[0]),
     # spinal or kebab?
-    'spine':  (True,  lambda i, word, _: word if i == 0 else '-'+word),
-    'title':  (False, lambda i, word, _: word.capitalize()),
+    'spine': (True, lambda i, word, _: word if i == 0 else '-' + word),
+    'title': (False, lambda i, word, _: word.capitalize()),
     # 'allcaps': (False, lambda i, word, _: word.upper()),
     # 'dubstring': (False, surround('"')),
     # 'string': (False, surround("'")),
     # 'padded': (False, surround(" ")),
-    'rot thirteen':  (False, rot13),
+    'rot thirteen': (False, rot13),
 
-    'pathway':  (True, lambda i, word, _: word if i == 0 else '/'+word),
-    'dotsway':  (True, lambda i, word, _: word if i == 0 else '.'+word),
-    'yellsnik':  (True, lambda i, word, _: word.capitalize() if i == 0 else '_'+word.capitalize()),
-    # 'champ': (True, lambda i, word, _: word.capitalize() if i == 0 else " "+word),
+    'pathway': (True, lambda i, word, _: word if i == 0 else '/' + word),
+    'dotsway': (True, lambda i, word, _: word if i == 0 else '.' + word),
+    'yellsnik': (True, lambda i, word, _: word.capitalize() if i == 0 else '_'\
+                 + capitalize()),
     'chief': (True, lambda i, word, _: word.capitalize()),
     'yeller': (False, lambda i, word, _: word.upper()),
     'thrack': (False, lambda i, word, _: word[0:3]),
     'quattro': (False, lambda i, word, _: word[0:4]),
 }
+
 
 def FormatText(m):
     fmt = []
@@ -182,7 +207,7 @@ def FormatText(m):
         word = parse_word(word)
         for name in reversed(fmt):
             smash, func = formatters[name]
-            word = func(i, word, i == len(words)-1)
+            word = func(i, word, i == len(words) - 1)
             spaces = spaces and not smash
         tmp.append(word)
     words = tmp
@@ -192,39 +217,6 @@ def FormatText(m):
         sep = ''
     Str(sep.join(words))(None)
 
-def format_text(words, i, last_function, spaces):
-    if (len(words) == 1):
-        word = words[0]
-        smash, func = formatters[name]
-        word = func(i, word, False)
-        spaces = spaces and not smash
-        return word
-    else:
-        if words[0] in formatters:
-            name = words[0]
-            # print('in the formatters', name)
-            smash, func = formatters[name]
-            spaces = spaces and not smash
-            return func(format_text(words[1:len(words)], i + 1, func, spaces))
-        else:
-            result = last_function(words[0], i, False)
-            sep = ' '
-            if not spaces:
-                sep = ''
-            return sep.join([result, format_text(words[1:len(words)], i + 1, last_function, spaces)])
-
-
-def FormatTextRecursive(m):
-    # fmt = []
-    # for w in m._words:
-    #     if isinstance(w, Word):
-    #         fmt.append(w.word)
-    print(m.dgndictation[0]._words)
-    # words = parse_words(m)
-    # print(words)
-
-    # format_text(words[1:len(words)], 0, )
-    # Str(sep.join(words))(None)
 
 ctx = Context('input')
 
@@ -260,7 +252,8 @@ keymap.update({
     '(semi | semicolon | sunk)': ';',
     'sinker': [Key('end'), ';'],
     # 'colon': ':',
-    'coal': ':',
+    # 'coal': ':',
+    'chess': ':',
     'coalgap': ': ',
     'coal twice': '::',
     'ellipsis': '...',
@@ -325,9 +318,7 @@ keymap.update({
     'state (def | deaf | deft)': 'def ',
     'state else if': 'elif ',
     'state if': 'if ',
-    'state else if': [' else if ()', Key('left')],
     'state while': ['while ()', Key('left')],
-    'state for': ['for ()', Key('left')],
     'state for': 'for ',
     'state switch': ['switch ()', Key('left')],
     'state case': ['case \nbreak;', Key('up')],

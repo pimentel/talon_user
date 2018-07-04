@@ -1,5 +1,6 @@
 import itertools
 
+
 # Useful for identifying app/window information for context selection
 def context_func(app, win):
     print('---')
@@ -11,6 +12,7 @@ def context_func(app, win):
     print('---')
     return True
 
+
 number_conversions = {
     # 'oh': '0', # 'oh' => zero
 }
@@ -19,8 +21,10 @@ for i, w in enumerate(['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'se
     number_conversions[w] = str(i)
     number_conversions['%s\\number'%(w)] = str(i)
 
+
 def parse_words_as_integer(words):
-    # TODO: Once implemented, use number input value rather than manually parsing number words with this function
+    # TODO: Once implemented, use number input value rather than manually
+    # parsing number words with this function
 
     # Ignore any potential trailing non-number words
     number_words = list(itertools.takewhile(lambda w: w not in number_conversions, words))

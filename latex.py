@@ -5,13 +5,16 @@ context = Context('latex')
 # if true, insert a \ prefix by default
 insert_prefix = True
 
+
 def latex_on():
     global insert_prefix
     insert_prefix = True
 
+
 def latex_off():
     global insert_prefix
     insert_prefix = False
+
 
 keymap = {
     'latex on': lambda m: latex_on(),
@@ -66,12 +69,14 @@ math_words = {
     'some': 'sum',
 }
 
+
 def insert_normal(w, prefix):
     def internal(w):
         if insert_prefix and prefix:
             w = '\\%s' % w
         return Str(w)(None)
     return lambda m: internal(w)
+
 
 def insert_capital(w, prefix):
     def internal(w):
@@ -83,12 +88,17 @@ def insert_capital(w, prefix):
 
 
 # upper and lower case versions of the greek alphabet
-keymap.update({'math %s' % k: insert_normal(v, True) for k, v in greek_alphabet.items()})
-keymap.update({'math cap %s' % k: insert_capital(v, True) for k, v in greek_alphabet.items()})
+keymap.update({'math %s' % k: insert_normal(v, True)
+               for k, v in greek_alphabet.items()})
+keymap.update({'math cap %s' % k: insert_capital(v, True)
+               for k, v in greek_alphabet.items()})
 
-keymap.update({'math %s' % k: insert_normal(v, True) for k, v in latex_symbols.items()})
-keymap.update({'word %s' % k: insert_normal(v, False) for k, v in math_words.items()})
-keymap.update({'title %s' % k: insert_capital(v, False) for k, v in math_words.items()})
+keymap.update({'math %s' % k: insert_normal(v, True)
+               for k, v in latex_symbols.items()})
+keymap.update({'word %s' % k: insert_normal(v, False)
+               for k, v in math_words.items()})
+keymap.update({'title %s' % k: insert_capital(v, False)
+               for k, v in math_words.items()})
 keymap.update({
     # a slash that is laying backwards
     'slay': '\\',
