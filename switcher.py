@@ -20,6 +20,7 @@ ctx = Context('switcher')
 keymap = {
     'fox {switcher.apps}': switch_app,
 
+    'gossip': lambda x: short_application(x, 'Slack'),
     'madame': lambda x: short_application(x, 'Atom'),
     'termite': lambda x: short_application(x, 'iTerm2'),
     'masseuse': lambda x: short_application(x, 'Messages'),

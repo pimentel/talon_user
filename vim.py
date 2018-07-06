@@ -1,4 +1,5 @@
 from talon.voice import Word, Context, Key, Rep, Str, press
+from time import sleep
 
 ctx = Context('vim', bundle='org.vim.MacVim')
 
@@ -19,8 +20,16 @@ def search_reverse(m):
     press('enter')
 
 
+def change_tab(m):
+    window = str(m._words[1])
+    press(window)
+    press('g')
+    press('t')
+
+
 ctx.keymap({
     'trough': Key('ctrl-w'),
+    'win (%s)+' % (' | '.join(map(str, range(10)))): change_tab,
 
     # insert mode
     # assumes you have AutoPair installed
@@ -51,7 +60,7 @@ ctx.keymap({
     'trail <dgndictation>': search_reverse,
 
     'run (search | silver)': [':Ack! -S \'\'', Key('left')],
-    'kill buffer': ':BD',
+    'kill buffer': ':BD\n',
     # 'lead': ',',
 
     # phrases that get misrecognized commonly

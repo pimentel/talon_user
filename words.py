@@ -27,14 +27,15 @@ keymap = {
     'word (dickt | dictionary)': 'dict',
     'word dup': 'dup',
     'word get hub': 'github',
+    'title get hub': 'GitHub',
     'word get': 'git',
     'word macvim': 'macvim',
     'word printf': 'printf',
     'word shell': 'shell',
     'word streak': ['streq()', Key('left')],
     'word them': 'vim',
-    'word tmux': 'tmux',
-    'yeller tmux': 'TMUX',
+    'word mux': 'tmux',
+    'yeller mux': 'TMUX',
     'word vim': 'vim',
     'word neo': 'neovim',
 
@@ -94,8 +95,6 @@ keymap = {
     'word plier': 'dplyr',
 
     'word talon': 'talon',
-    # 'word Point2d': 'Point2d',
-    # 'word Point3d': 'Point3d',
     'title Point': 'Point',
     'word angle': 'angle',
 
@@ -113,19 +112,5 @@ keymap.update({
     'insert code': ['```\n\n```', Key('up')],
     '(insert (our | are))': ['```{r}\n\n```', Key('up')],
 })
-
-# keymap.update({
-#     'math tao': 'tao',
-#     'math chai': 'chi',
-#     'math row': 'rho',
-#     'math sigh': 'psi',
-#     'math some': 'sum',
-#     'math root': 'sqrt',
-#     'math empirical': 'ecdf',
-#     'math poison': 'poisson',
-#     'math fee': 'phi',
-#     'math mew': 'mu',
-#     'math pie': 'pi',
-# })
 
 ctx.keymap(keymap)

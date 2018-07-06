@@ -33,7 +33,6 @@ keymap = {
     'last tab': Key('cmd-shift-['),
     'next tab': Key('cmd-shift-]'),
     'new tab': Key('cmd-t'),
-    # 'reload tab': Key('cmd-r'),
     'reload': Key('cmd-r'),
 
     # 'scroll down': [Key('down')] * 30,

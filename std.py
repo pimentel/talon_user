@@ -223,12 +223,12 @@ ctx = Context('input')
 keymap = {}
 keymap.update(alpha)
 keymap.update({
-    # 'phrase <dgndictation> [over]': text,
-    'go <dgndictation> [over]': text,
+    'phrase <dgndictation> [over]': text,
+    # 'go <dgndictation> [over]': text,
     # 'word <dgnwords>': word,
 
     # 'sentence <dgndictation> [over]': sentence_text,
-    'sent <dgndictation> [over]': sentence_text,
+    # 'sent <dgndictation> [over]': sentence_text,
     'champ <dgndictation> [over]': sentence_text,
 
     'menu [<dgndictation>] [over]': [Key('ctrl-f2'), text, Key('down')],
@@ -251,9 +251,9 @@ keymap.update({
     '(downscore | crunder)': '_',
     '(semi | semicolon | sunk)': ';',
     'sinker': [Key('end'), ';'],
-    # 'colon': ':',
+    'colon': ':',
     # 'coal': ':',
-    'chess': ':',
+    # 'chess': ':',
     'coalgap': ': ',
     'coal twice': '::',
     'ellipsis': '...',

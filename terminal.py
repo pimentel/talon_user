@@ -33,9 +33,10 @@ keymap = {
     'mux vertical': [Key('ctrl-b'), '%'],
     'mux leave': [Key('ctrl-b'), Key('d')],
     'mux scroll': [Key('ctrl-b'), Key('[')],
-    'win (%s)+' % (' | '.join(map(str, range(10)))): tmux_window,
     'switch session': Key('ctrl-b s'),
-    'toggle session': Key('f12'),
+    'mux toggle': Key('f12'),
+    'kill session': [Key('ctrl-b :'), 'kill-session\n'],
+    'win (%s)+' % (' | '.join(map(str, range(10)))): tmux_window,
 
     'run cat': 'cat ',
     'run less': 'less ',
