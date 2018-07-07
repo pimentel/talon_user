@@ -44,6 +44,8 @@ ctx.keymap({
     'pain vertical': [Key('escape'), ':vsplit\n'],
     'pain horizontal': [Key('escape'), ':split\n'],
     'resize window': Key('ctrl-w ='),
+    'left indent': '<<',
+    'right indent': '>>',
 
     # vim-slime
     'send slime': [Key('ctrl-c'), Key('ctrl-c')],

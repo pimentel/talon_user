@@ -68,7 +68,7 @@ keymap = {
     'run untar': 'tar -xvf ',
     'run tar': 'tar -cvf ',
     'run neo': 'nvim ',
-    'run macvim': 'mvim ',
+    'run macvim': 'mvim --remote-silent ',
 
     'run get': 'git ',
     'run get (R M | remove)': 'git rm ',
