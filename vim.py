@@ -1,7 +1,7 @@
 from talon.voice import Word, Context, Key, Rep, Str, press
 from time import sleep
 
-ctx = Context('vim', bundle='org.vim.MacVim')
+ctx = Context('vim', bundle = 'org.vim.MacVim')
 
 
 def search_forward(m):
@@ -50,9 +50,9 @@ ctx.keymap({
     # vim-slime
     'send slime': [Key('ctrl-c'), Key('ctrl-c')],
     # normal mode
-    'send function': ':call RSendFunctionSlime()\n',
-    'send line': ':call RSendLineSlime()\n',
-    'reset slime': Key('ctrl-c v'),
+    'send function': ':call b:SlimeBlocksFunction()\n',
+    'send line': ':SlimeSend\n',
+    'configure slime': Key('ctrl-c v'),
 
     # fzf.vim
     'list buffers': ':Buffers\n',
@@ -63,7 +63,6 @@ ctx.keymap({
 
     'run (search | silver)': [':Ack! -S \'\'', Key('left')],
     'kill buffer': ':BD\n',
-    # 'lead': ',',
 
     # phrases that get misrecognized commonly
     'champ obsess': 'Obsess',

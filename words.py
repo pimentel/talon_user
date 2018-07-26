@@ -7,6 +7,7 @@ keymap = {
     'word eye': 'eye',
     'word bson': 'bson',
     'word iter': 'iter',
+    'word index': 'index',
 
     'word pain': 'pane',
     'word pains': 'panes',
@@ -33,10 +34,9 @@ keymap = {
     'word printf': 'printf',
     'word shell': 'shell',
     'word streak': ['streq()', Key('left')],
-    'word them': 'vim',
     'word mux': 'tmux',
     'yeller mux': 'TMUX',
-    'word vim': 'vim',
+    'word (them | vim)': 'vim',
     'word neo': 'neovim',
 
     'word stood in': 'stdin',
@@ -88,6 +88,8 @@ keymap = {
     'title attack': 'ATAC',
     'word geo': 'geuvadis',
     'title geo': 'GEUVADIS',
+    'word fast Q': 'fastq',
+    'word fasta': 'fasta',
 
     'shrink ensemble': 'ensembl',
 

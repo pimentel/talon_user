@@ -13,7 +13,11 @@ alnum = list(zip(alpha_alt, string.ascii_lowercase)) + \
 alpha = {}
 # alpha.update(dict(alnum))
 
-extra_modifier_key_targets = {'left':'left','right':'right','up':'up','down':'down','minus':'-','plus':'+','(return|enter)':'enter','slash':'/','delete':'backspace','space':'space','index right':']','index left':'[','escape':'esc'}
+extra_modifier_key_targets = {
+    'left': 'left', 'right': 'right', 'up': 'up', 'down': 'down', 'minus': '-',
+    'plus': '+', '(return|enter)': 'enter', 'slash': '/',
+    'delete': 'backspace', 'space': 'space', 'index right': ']',
+    'index left': '[', 'escape': 'esc'}
 
 for (k, v) in extra_modifier_key_targets.items():
     alnum.append((k, v))
@@ -81,9 +85,11 @@ token_replace = {
     'Callisto': 'kallisto',
     'meta-\\\\meta': 'meta',
     'multi-\\\\multi': 'multi',
+    'pseudo-\\\\pseudo': 'pseudo',
 
     'Jean': 'gene',
     'jeans': 'genes',
+    'rose': 'rows',
 }
 
 prefix_mapping = set([
@@ -231,7 +237,7 @@ keymap.update({
     # 'sent <dgndictation> [over]': sentence_text,
     'champ <dgndictation> [over]': sentence_text,
 
-    'menu [<dgndictation>] [over]': [Key('ctrl-f2'), text, Key('down')],
+    # 'menu [<dgndictation>] [over]': [Key('ctrl-f2'), text, Key('down')],
 
     'comma <dgndictation> [over]': [', ', text],
     'period <dgndictation> [over]': ['. ', sentence_text],
@@ -239,9 +245,10 @@ keymap.update({
 
     'vein <dgndictation> [over]': [text, ' '],
 
-    '(%s)+ <dgndictation>' % (' | '.join(formatters)): FormatText,
+    '(%s)+ <dgndictation> [over]' % (' | '.join(formatters)): FormatText,
 
     'padded': ['  ', Key('left')],
+    'rope': ["''", Key('left')],
     'shock': Key('enter'),
     'risk': Key('esc'),
     'question [mark]': '?',
@@ -257,11 +264,14 @@ keymap.update({
     'coalgap': ': ',
     'coal twice': '::',
     'ellipsis': '...',
-    '(square | left square [bracket])': '[', '(rsquare | are square | right square [bracket])': ']',
-    '(paren | left paren)': '(', '(rparen | are paren | right paren)': ')',
+    '(square | left square [bracket])': '[',
+    '(rsquare | are square | right square [bracket])': ']',
+    '(paren | left paren)': '(',
+    '(rparen | are paren | right paren)': ')',
     '(brace | left brace)': '{', '(rbrace | are brace | right brace)': '}',
     '(curly)': '{', '(rcurly | are curly)': '}',
-    '(angle | left angle | less than)': '<', '(rangle | are angle | right angle | greater than)': '>',
+    '(angle | left angle | less than)': '<',
+    '(rangle | are angle | right angle | greater than)': '>',
 
     '(star | asterisk)': '*',
     '(pound | hash [sign] | octo | thorpe | number sign)': '#',
@@ -288,6 +298,7 @@ keymap.update({
     'dot log': '.log',
     'dot H5': '.h5',
     'dot com': '.com',
+    'dot TXT': '.txt',
 
     'const': 'const ',
     'static': 'static ',
@@ -309,11 +320,10 @@ keymap.update({
 
     'args': ['()', Key('left')],
     'index': ['[]', Key('left')],
+    'halo': ['<>', Key('left')],
     # 'block': ['{}', Key('left enter enter up tab')],
     'empty array': '[]',
     'empty dict': '{}',
-
-    'op tag': ['<>', Key('left')],
 
     'state (def | deaf | deft)': 'def ',
     'state else if': 'elif ',
@@ -381,7 +391,8 @@ keymap.update({
     '(op (power | exponent) | to the power [of])': ' ** ',
     'op and': ' && ',
     'op or': ' || ',
-    'pipe': ' | ',
+    'pipe': '|',
+    'padded pipe': ' ',
     '[op] (logical | bitwise) and': ' & ',
     '[op] (logical | bitwise) or': ' | ',
     '(op | logical | bitwise) (ex | exclusive) or': ' ^ ',
@@ -403,5 +414,9 @@ keymap.update({
     'smash row names': 'rownames',
     'near smash row': 'nrow',
     'dotsway row names': 'row.names',
+    'snake inner join': 'inner_join',
+    'snake left join': 'left_join',
+    'snake anti join': 'anti_join',
+    'snake semi join': 'semi_join',
 })
 ctx.keymap(keymap)
