@@ -1,145 +1,183 @@
 from talon import app, ui, clip
-from talon.api import lib, ffi
 from talon.audio import record, noise
 from talon.engine import engine
 from talon.voice import Word, Key, Context, Str, press
 
+from talon import canvas
+from talon.skia import Rect
+
+from user.std import parse_word
+
+########################################################################
+# global settings
+########################################################################
+
+# a list of homophones where each line is a comma separated list
+# e.g. where,wear,ware
+# a suitable one can be found here:
+# https://github.com/pimentel/homophones
+homophones_file = '/Users/hjp/Dropbox/homophones/homophones.csv'
+# if quick_replace, then when a word is selected and only one homophone exists,
+# replace it without bringing up the options
+quick_replace = True
+# font size of the overlay
+font_size = 22
+# left padding of the font in the overlay
+padding_left = 20
+########################################################################
+
 context = Context('homophones')
+pick_context = Context('pick')
 
-homophones = [
-    ['1', 'one', 'won'],
-    ['2', 'two', 'too', 'to'],
-    ['3', 'three'],
-    ['4', 'for', 'four', 'fore'],
-    ['5', 'five'],
-    ['6', 'six'],
-    ['7', 'seven'],
-    ['8', 'eight'],
-    ['9', 'nine'],
-    ["I'll", 'aisle', 'isle'],
-    ['awful', 'offal'],
-    ['ad', 'add'],
-    ['ads', 'adds'],
-    ['bald', 'balled', 'bawled'],
-    ['ball', 'bawl'],
-    ['band', 'banned'],
-    ['base', 'bass'],
-    ['basil', 'basal'],
-    ['bear', 'bare'],
-    ['break', 'brake'],
-    ['breaks', 'brakes'],
-    ['bread', 'bred'],
-    ['but', 'butt'],
-    ['by', 'buy', 'bye'],
-    ['cash', 'cache'],
-    ['cashed', 'cached'],
-    ['Jean', 'gene'],
-    ['jeans', 'genes'],
-    ['meet', 'meat'],
-    ['right', 'write', 'rite'],
-    ['pool', 'pull'],
-    ["there", "they're", "their"],
-    ['where', 'wear'],
-]
+phones = {}
+with open(homophones_file, 'r') as f:
+    for h in f:
+        h = h.rstrip()
+        h = h.split(',')
+        for w in h:
+            w = w.lower()
+            others = phones.get(w, None)
+            if others is None:
+                phones[w] = sorted(h)
+            else:
+                # if there are multiple hits, collapse them into one list
+                others += h
+                others = set(others)
+                others = sorted(others)
+                phones[w] = others
 
-all_homophones = {}
-for l in homophones:
-    for word in l:
-        all_homophones[word] = l
+all_homophones = phones
 
-font = None
 active_word_list = None
+is_selection = False
 
-def run_homophones(vg, w, h):
-    global font
 
+def draw_homophones(canvas):
+    global active_word_list
     if active_word_list is None:
         return
 
-    if font is None:
-        font = lib.nvgCreateFont(vg, 'courier'.encode('utf8'), '/Library/Fonts/Courier New Bold.ttf'.encode('utf8'));
+    paint = canvas.paint
+    paint.textsize = font_size
+    paint.color = '000000'
+    paint.style = paint.Style.FILL
+    canvas.draw_rect(Rect(canvas.x, canvas.y, canvas.width, canvas.height))
 
-    x = w / 3
-    y = h / 3
-    lib.nvgBeginPath(vg)
-
-    wt = w / 3
-    ht = h / 3
-
-    lib.nvgRect(vg, x, y, wt, ht)
-    lib.nvgStrokeWidth(vg, 2)
-    lib.nvgFillColor(vg, lib.nvgRGBA(0, 0, 0, 255))
-    lib.nvgFill(vg)
+    line_height = paint.get_fontmetrics(1.5)[0]
 
     h = active_word_list
     h_string = ['%d . %s' % (i + 1, h[i]) for i in range(len(h))]
-    h_string = '\n'.join(h_string)
-    h_string = h_string.encode('utf8')
+    paint.color = 'ffffff'
+    for i in range(len(h_string)):
+        h = h_string[i]
+        canvas.draw_text(h, canvas.x + padding_left,
+                         canvas.y + line_height + (i * line_height))
 
-    lib.nvgFontFaceId(vg, font)
-    lib.nvgFontSize(vg, 22)
-    lib.nvgFillColor(vg, lib.nvgRGBA(255, 255, 255, 255))
-    lib.nvgTextBox(vg, x + 20, y + 20, 400, h_string, ffi.NULL)
 
-    lib.nvgStrokeWidth(vg, 3)
+# initialize the overlay
+screen = ui.main_screen()
+w, h = screen.width / 3, screen.height / 3
+panel = canvas.Canvas(w, h, w, h, panel=True)
+panel.register('draw', draw_homophones)
+panel.hide()
 
-pick_context = Context('pick')
 
 def close_homophones():
     pick_context.unload()
-    app.unregister('overlay', run_homophones)
+    panel.hide()
+
 
 def make_selection(m):
-    d = int(str(m._words[0]))
+    print(m)
+    words = list(map(parse_word, m._words))
+    d = None
+    f = lambda x: x
+    if len(words) == 1:
+        d = int(str(m._words[0]))
+    else:
+        d = int(words[1])
+        if words[0] == 'ship':
+            f = lambda x: x[0].upper() + x[1:]
+        else:
+            # assume 'yeller'
+            f = lambda x: x.upper()
     w = active_word_list[d - 1]
-    Str(w)(None)
+    w = f(w)
+    if is_selection:
+        clip.set(w)
+        press('cmd-v', wait=0)
+    else:
+        Str(w)(None)
+
     close_homophones()
+
 
 def get_selection():
     with clip.capture() as s:
         press('cmd-c', wait=0)
     return s.get()
 
-def raise_homophones(m):
+
+def raise_homophones(m, force_raise=False):
     global pick_context
     global active_word_list
+    global is_selection
 
-
-    # if hasattr(m, 'dgndictation') and len(m.dgndictation[0]._words) > 0:
-    if len(m._words) > 1:
-        if hasattr(m, 'dgndictation'):
-            word = str(m.dgndictation[0]._words[0])
-        else:
-            # deal with the 1, 2, ... case
-            word = str(m._words[1])
+    is_selection = False
+    if hasattr(m, 'dgndictation'):
+        print(m.dgndictation[0]._words)
+        word = str(m.dgndictation[0]._words[0])
+        word = parse_word(word)
     else:
         word = get_selection()
+        word = word.strip()
+        is_selection = True
+
+    word = word.lower()
 
     if word not in all_homophones:
         app.notify('homophones.py', '"%s" not in homophones list' % word)
         return
 
     active_word_list = all_homophones[word]
+    if is_selection and len(active_word_list) == 2 and quick_replace and \
+            not force_raise:
+        if word == active_word_list[0].lower():
+            new = active_word_list[1]
+        else:
+            new = active_word_list[0]
+        clip.set(new)
+        press('cmd-v', wait=0)
+        return
 
-    app.register('overlay', run_homophones)
     valid_indices = range(len(active_word_list))
+    panel.show()
+    panel.freeze()
 
     keymap = {
         '0': lambda x: close_homophones(),
     }
     keymap.update({'%s' % (i + 1): make_selection for i in valid_indices})
+    keymap.update({'ship %s' % (i + 1): make_selection for i in valid_indices})
+    keymap.update({'yeller %s' % (i + 1):
+                   make_selection for i in valid_indices})
     pick_context.keymap(keymap)
     pick_context.load()
+
 
 keymap = {
     # Usage:
     # 'homophones word' to look up those homophones.
-    # when the list pops up, say appropriate number or zero (leave and do nothing).
+    # when the list pops up, say appropriate number or zero
+    # (leave and do nothing).
     # can also call 'homophones' without any arguments.
     # it will look at the selected text and look that up.
-    'homophones [<dgndictation>]': raise_homophones,
-    }
-keymap.update({'homophones %d' % i : raise_homophones for i in range(10)})
+    'phones [<dgndictation>]': raise_homophones,
+    'force phones [<dgndictation>]': lambda m: raise_homophones(m, True),
+}
+
+# keymap = {'alt %s' % k: raise_homophones for k in all_homophones.keys()}
+
+keymap.update({'alt %d' % i: raise_homophones for i in range(10)})
 
 context.keymap(keymap)
-

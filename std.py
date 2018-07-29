@@ -237,8 +237,6 @@ keymap.update({
     # 'sent <dgndictation> [over]': sentence_text,
     'champ <dgndictation> [over]': sentence_text,
 
-    # 'menu [<dgndictation>] [over]': [Key('ctrl-f2'), text, Key('down')],
-
     'comma <dgndictation> [over]': [', ', text],
     'period <dgndictation> [over]': ['. ', sentence_text],
     'more <dgndictation> [over]': [' ', text],
@@ -249,7 +247,8 @@ keymap.update({
 
     'padded': ['  ', Key('left')],
     'rope': ["''", Key('left')],
-    'shock': Key('enter'),
+    'bump': Key('enter'),
+    # 'shock': Key('enter'),
     'risk': Key('esc'),
     'question [mark]': '?',
     'tilde': '~',
@@ -259,8 +258,6 @@ keymap.update({
     '(semi | semicolon | sunk)': ';',
     'sinker': [Key('end'), ';'],
     'colon': ':',
-    # 'coal': ':',
-    # 'chess': ':',
     'coalgap': ': ',
     'coal twice': '::',
     'ellipsis': '...',
@@ -274,7 +271,8 @@ keymap.update({
     '(rangle | are angle | right angle | greater than)': '>',
 
     '(star | asterisk)': '*',
-    '(pound | hash [sign] | octo | thorpe | number sign)': '#',
+    # '(pound | hash [sign] | octo | thorpe | number sign)': '#',
+    '(pound | hash [sign] )': '#',
     # 'percent [sign]': '%',
     'purse': '%',
     'caret': '^',
@@ -409,6 +407,7 @@ keymap.update({
     # commonly misrecognized phrases
     # mostly talon
     'champ key': 'Key',
+    'snake parse words': 'parse_words',
 
     # R
     'smash row names': 'rownames',

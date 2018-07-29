@@ -12,7 +12,7 @@ alpha.update(dict(alnum))
 # these help in vim
 alpha_up = {
     'gate': 'G',
-    'viz.': 'V',
+    # 'viz.': 'V',
 }
 
 case_state = False
