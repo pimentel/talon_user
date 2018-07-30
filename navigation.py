@@ -64,8 +64,8 @@ def ui_event(event, arg):
         update_lists()
 
 
-ui.register('', ui_event)
-update_lists()
+# ui.register('', ui_event)
+# update_lists()
 
 keymap = {
     # Application navigation
@@ -73,7 +73,7 @@ keymap = {
     'swick': Key('cmd-tab'),
 
     # 'menu <dgndictation>': select_menu_bar_item,
-    'menu {navigation.menu_items}': select_menu_bar_item,
+    # 'menu {navigation.menu_items}': select_menu_bar_item,
 
     'close tab': Key('cmd-w'),
     'close window': Key('cmd-shift-w'),

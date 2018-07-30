@@ -1,4 +1,4 @@
-from talon import app, ui, clip
+from talon import app, ui, clip, cron
 from talon.audio import record, noise
 from talon.engine import engine
 from talon.voice import Word, Key, Context, Str, press
@@ -30,10 +30,12 @@ context = Context('homophones')
 pick_context = Context('pick')
 
 phones = {}
+canonical = []
 with open(homophones_file, 'r') as f:
     for h in f:
         h = h.rstrip()
         h = h.split(',')
+        canonical.append(max(h, key=len))
         for w in h:
             w = w.lower()
             others = phones.get(w, None)
@@ -49,7 +51,7 @@ with open(homophones_file, 'r') as f:
 all_homophones = phones
 
 active_word_list = None
-is_selection = False
+# is_selection = False
 
 
 def draw_homophones(canvas):
@@ -83,33 +85,26 @@ panel.hide()
 
 
 def close_homophones():
-    pick_context.unload()
     panel.hide()
+    pick_context.unload()
 
 
-def make_selection(m):
-    print(m)
-    words = list(map(parse_word, m._words))
+def make_selection(m, is_selection, transform=lambda x: x):
+    cron.after('0s', close_homophones)
+    words = m._words
     d = None
-    f = lambda x: x
     if len(words) == 1:
-        d = int(str(m._words[0]))
+        d = int(parse_word(words[0]))
     else:
-        d = int(words[1])
-        if words[0] == 'ship':
-            f = lambda x: x[0].upper() + x[1:]
-        else:
-            # assume 'yeller'
-            f = lambda x: x.upper()
+        d = int(parse_word(words[1]))
     w = active_word_list[d - 1]
-    w = f(w)
+    if len(words) > 1:
+        w = transform(w)
     if is_selection:
         clip.set(w)
         press('cmd-v', wait=0)
     else:
         Str(w)(None)
-
-    close_homophones()
 
 
 def get_selection():
@@ -118,20 +113,22 @@ def get_selection():
     return s.get()
 
 
-def raise_homophones(m, force_raise=False):
+def raise_homophones(m, force_raise=False, is_selection=False):
     global pick_context
     global active_word_list
-    global is_selection
 
-    is_selection = False
-    if hasattr(m, 'dgndictation'):
-        print(m.dgndictation[0]._words)
-        word = str(m.dgndictation[0]._words[0])
-        word = parse_word(word)
-    else:
+    if is_selection:
         word = get_selection()
         word = word.strip()
-        is_selection = True
+    elif hasattr(m, 'dgndictation'):
+        # this mode is currently disabled...
+        # experimenting with using a canonical representation and not using
+        # dgndictation
+        word = str(m.dgndictation[0]._words[0])
+        word = parse_word(word)
+    elif len(m._words) >= 2:
+        word = str(m._words[len(m._words) - 1])
+        word = parse_word(word)
 
     word = word.lower()
 
@@ -157,27 +154,52 @@ def raise_homophones(m, force_raise=False):
     keymap = {
         '0': lambda x: close_homophones(),
     }
-    keymap.update({'%s' % (i + 1): make_selection for i in valid_indices})
-    keymap.update({'ship %s' % (i + 1): make_selection for i in valid_indices})
+
+    def capitalize(x):
+        return x[0].upper() + x[1:]
+
+    def uppercase(x):
+        return x.upper()
+
+    def lowercase(x):
+        return x.lower()
+
+    keymap.update({'%s' % (i + 1):
+                   lambda m: make_selection(m, is_selection)
+                   for i in valid_indices})
+    keymap.update({'ship %s' % (i + 1):
+                   lambda m: make_selection(m, is_selection, capitalize)
+                   for i in valid_indices})
     keymap.update({'yeller %s' % (i + 1):
-                   make_selection for i in valid_indices})
+                   lambda m: make_selection(m, is_selection, uppercase)
+                   for i in valid_indices})
+    keymap.update({'lower %s' % (i + 1):
+                   lambda m: make_selection(m, is_selection, lowercase)
+                   for i in valid_indices})
     pick_context.keymap(keymap)
     pick_context.load()
 
 
-keymap = {
-    # Usage:
-    # 'homophones word' to look up those homophones.
-    # when the list pops up, say appropriate number or zero
-    # (leave and do nothing).
-    # can also call 'homophones' without any arguments.
-    # it will look at the selected text and look that up.
-    'phones [<dgndictation>]': raise_homophones,
-    'force phones [<dgndictation>]': lambda m: raise_homophones(m, True),
-}
+# keymap = {
+#     # Usage:
+#     # 'homophones word' to look up those homophones.
+#     # when the list pops up, say appropriate number or zero
+#     # (leave and do nothing).
+#     # can also call 'homophones' without any arguments.
+#     # it will look at the selected text and look that up.
+#     # 'phones [<dgndictation>]': raise_homophones,
+#     # 'force phones [<dgndictation>]': lambda m: raise_homophones(m, True),
+# }
 
-# keymap = {'alt %s' % k: raise_homophones for k in all_homophones.keys()}
+keymap = {'phones %s' % k: raise_homophones for k in canonical}
+keymap.update({'phones': lambda m: raise_homophones(m, is_selection=True)})
+keymap.update({'force phones %s' % k:
+               lambda m: raise_homophones(m, force_raise=True)
+               for k in canonical})
+keymap.update({'force phones':
+               lambda m: raise_homophones(m, force_raise=True,
+                                          is_selection=True)})
 
-keymap.update({'alt %d' % i: raise_homophones for i in range(10)})
+# keymap.update({'alt %d' % i: raise_homophones for i in range(10)})
 
 context.keymap(keymap)
