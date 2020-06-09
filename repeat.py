@@ -35,5 +35,5 @@ ctx.keymap({
     'quarr': Rep(3),
     # 'fypes': lambda m: repeat_delay(4),
     'fypes': Rep(4),
-    'repeat (0 | oh | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)+': repeat,
+    # 'repeat (0 | oh | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)+': repeat,
 })

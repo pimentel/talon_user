@@ -30,6 +30,7 @@ def change_tab(m):
 ctx.keymap({
     'trough': Key('ctrl-w'),
     'win (%s)+' % (' | '.join(map(str, range(10)))): change_tab,
+    'last file': [Key('escape'), Key('ctrl-^')],
 
     # insert mode
     # assumes you have AutoPair installed
@@ -41,8 +42,8 @@ ctx.keymap({
     'pain right': [Key('ctrl-w'), Key('l')],
     'pain down': [Key('ctrl-w'), Key('j')],
     'pain up': [Key('ctrl-w'), Key('k')],
-    'pain vertical': [Key('escape'), ':vsplit\n'],
-    'pain horizontal': [Key('escape'), ':split\n'],
+    'vertical split': [Key('escape'), ':vsplit\n'],
+    'horizontal split': [Key('escape'), ':split\n'],
     'resize window': Key('ctrl-w ='),
     'left indent': '<<',
     'right indent': '>>',
@@ -51,12 +52,13 @@ ctx.keymap({
     'send slime': [Key('ctrl-c'), Key('ctrl-c')],
     # normal mode
     'send function': ':call b:SlimeBlocksFunction()\n',
+    'send markdown': ':call b:SlimeBlocksFenced()\n',
     'send line': ':SlimeSend\n',
     'configure slime': Key('ctrl-c v'),
 
     # fzf.vim
-    'list buffers': ':Buffers\n',
-    'list files': ':Files\n',
+    'buffers': ':Buffers\n',
+    'LS': ':Files\n',
 
     'crew <dgndictation>': search_forward,
     'trail <dgndictation>': search_reverse,

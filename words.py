@@ -3,12 +3,19 @@ from talon.voice import Context, Key
 ctx = Context('words')
 
 keymap = {
+    'word width': 'width',
     'word queue': 'queue',
     'word eye': 'eye',
     'word bson': 'bson',
     'word iter': 'iter',
     'word index': 'index',
 
+    'word jupiter': 'jupyter',
+
+    'word args': 'args',
+    'word paste': 'paste',
+    'word point': 'point',
+    'word head': 'head',
     'word pain': 'pane',
     'word pains': 'panes',
     'word sink': 'sync',
@@ -50,9 +57,9 @@ keymap = {
     'shrink parameter': 'param',
     'shrink parameters': 'params',
 
-    'word shake file': 'snakefile',
-    'title shake file': 'Snakefile',
-    'word shake make': 'snakemake',
+    'word snake file': 'snakefile',
+    'title snake file': 'Snakefile',
+    'word snake make': 'snakemake',
     'word latex make': 'latexmk',
     'word seek T K': 'seqtk',
     'word numpy': 'numpy',
@@ -61,20 +68,36 @@ keymap = {
     'title adam': 'Atom',
 
     # names
-    'word wife': 'puente',
-    'title wife': 'Puente',
-    'word son': 'avi',
-    'title son': 'Avi',
+    'word puenteh': 'puente',
+    'title puenteh': 'Puente',
+    'word avi': 'avi',
+    'title avi': 'Avi',
+    'title aviell': 'Aviel',
     'word lior': 'lior',
     'title lior': 'Lior',
+    'word palkter': 'pachter',
+    'title palkter': 'Pachter',
     'word paul': 'pall',
     'title paul': 'Pall',
     'word bays': 'bayes',
     'title bays': 'Bayes',
 
     # bio words
+    'word mod': 'maude',
+    'title mod': 'MAUDE',
+    'word magic': 'mageck',
+    'title magic': 'MAGeCK',
+
+    'word biomart': 'biomaRt',
+    'word crisper': 'crispr',
+    'title crisper': 'CRISPR',
+    'word chrome': 'chrom',
+    'word entrée': 'entrez',
+    'title racks': 'RAxML',
+    'word contig': 'contig',
     'word snip': 'snp',
-    'title snip': 'SNP',
+    'word snips': 'snps',
+    'title snips': 'SNPs',
     'word QTL': 'qtl',
     'title QTL': 'QTL',
     'word EQTL': 'eqtl',
@@ -95,6 +118,7 @@ keymap = {
 
     # R
     'word plier': 'dplyr',
+    'word quantile': 'quantile',
 
     'word talon': 'talon',
     'title Point': 'Point',
@@ -106,13 +130,16 @@ keymap = {
     'shrink parameter': 'param',
 
     # weird tech words
+    'word pandoc': 'pandoc',
+    'word SQ light': 'sqlite',
     'word trello': 'trello',
     'word presto': 'prezto',
+    'word slurm': 'slurm',
 }
 
 keymap.update({
     'insert code': ['```\n\n```', Key('up')],
-    '(insert (our | are))': ['```{r}\n\n```', Key('up')],
+    'insert (our | are)': ['```{r}\n\n```', Key('up')],
 })
 
 ctx.keymap(keymap)

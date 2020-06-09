@@ -13,6 +13,7 @@ websites = {
     'gmail': 'https://gmail.com',
     'get hub': 'https://github.com',
     'reddit': 'https://reddit.com',
+    'scholar': 'https://scholar.google.com',
     'talon docs': 'https://github.com/dwighthouse/unofficial-talonvoice-docs',
     'talon official docs': 'https://talonvoice.com/docs/index.html',
 }

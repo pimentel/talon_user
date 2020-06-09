@@ -19,6 +19,10 @@ extra_modifier_key_targets = {
     'delete': 'backspace', 'space': 'space', 'index right': ']',
     'index left': '[', 'escape': 'esc'}
 
+extra_modifier_key_targets.update({
+    'junk': 'backspace'
+})
+
 for (k, v) in extra_modifier_key_targets.items():
     alnum.append((k, v))
 
@@ -86,14 +90,21 @@ token_replace = {
     'meta-\\\\meta': 'meta',
     'multi-\\\\multi': 'multi',
     'pseudo-\\\\pseudo': 'pseudo',
+    'alva': 'alpha',
+    'arnie': 'rna',
+    'polly': 'poly',
+    'exxon': 'exon',
 
+    'Prichard': 'pritchard',
     'Jean': 'gene',
     'jeans': 'genes',
+    'Ro': 'row',
     'rose': 'rows',
 }
 
 prefix_mapping = set([
-    'intron'
+    'intron',
+    'centromere'
 ])
 
 
@@ -180,13 +191,10 @@ formatters = {
     'snake': (True, lambda i, word, _: word if i == 0 else '_' + word),
     'smash': (True, lambda i, word, _: word),
     'snitch': (True, lambda i, word, _: word[0]),
-    # spinal or kebab?
     'spine': (True, lambda i, word, _: word if i == 0 else '-' + word),
     'title': (False, lambda i, word, _: word.capitalize()),
-    # 'allcaps': (False, lambda i, word, _: word.upper()),
     # 'dubstring': (False, surround('"')),
     # 'string': (False, surround("'")),
-    # 'padded': (False, surround(" ")),
     'rot thirteen': (False, rot13),
 
     'pathway': (True, lambda i, word, _: word if i == 0 else '/' + word),
@@ -273,6 +281,7 @@ keymap.update({
     '(star | asterisk)': '*',
     # '(pound | hash [sign] | octo | thorpe | number sign)': '#',
     '(pound | hash [sign] )': '#',
+    'roxy': '#\' ',
     # 'percent [sign]': '%',
     'purse': '%',
     'caret': '^',
@@ -319,13 +328,14 @@ keymap.update({
     'args': ['()', Key('left')],
     'index': ['[]', Key('left')],
     'halo': ['<>', Key('left')],
-    # 'block': ['{}', Key('left enter enter up tab')],
+    'code block': ['{}', Key('left enter enter up tab')],
     'empty array': '[]',
     'empty dict': '{}',
 
     'state (def | deaf | deft)': 'def ',
     'state else if': 'elif ',
     'state if': 'if ',
+    'state else': 'else ',
     'state while': ['while ()', Key('left')],
     'state for': 'for ',
     'state switch': ['switch ()', Key('left')],
@@ -360,7 +370,9 @@ keymap.update({
     # R specific
     'rambo': ' <- ',
     'our pipe': ' %>% ',
+    'our head': [' %>% head', Key('enter')],
     'state library': ['library(\'\')', Key('left'), Key('left')],
+    'word mutate': 'mutate',
 
     'armin': ' -',
     'longarmin': ' --',

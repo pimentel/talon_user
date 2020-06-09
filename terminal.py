@@ -29,8 +29,9 @@ keymap = {
     'mux new': 'tmux new -s ',
     'mux attach': 'tmux attach -t ',
     'mux list': 'tmux ls\n',
-    'mux horizontal': [Key('ctrl-b'), '\"'],
-    'mux vertical': [Key('ctrl-b'), '%'],
+    'mux windows': Key('ctrl-b s'),
+    'horizontal split': [Key('ctrl-b'), '\"'],
+    'vertical split': [Key('ctrl-b'), '%'],
     'mux leave': [Key('ctrl-b'), Key('d')],
     'mux scroll': [Key('ctrl-b'), Key('[')],
     'switch session': Key('ctrl-b s'),
@@ -38,12 +39,15 @@ keymap = {
     'kill session': [Key('ctrl-b :'), 'kill-session\n'],
     'win (%s)+' % (' | '.join(map(str, range(10)))): tmux_window,
 
+    'save session': Key('ctrl-b ctrl-s'),
+
     'run cat': 'cat ',
     'run less': 'less ',
     'run list': 'ls\n',
     'run list all': 'ls -lah ',
     'run list long': 'ls -lh ',
-    'run get voice': ['git commit -am \' #talon\'', Key('alt-left left')],
+    'run list time': 'ls -tlh ',
+    'run get voice': ['git commit -am \' #talon\'', Key('alt-left left left')],
     'run bib': 'bibtex ',
     'run socks': 'ssh -D localhost:2020 ',
     'run grep': 'grep ',
@@ -111,11 +115,10 @@ keymap = {
 
     'run stow': 'stow ',
 
-    'run interactive': ['sdev -p pritch -t 4:00:00 -m 16GB', Key('left left')],
+    'run interactive': ['sdev -p pritch -t 48:00:00 -m 96GB', Key('left left')],
     'run SQ': 'squeue -u $USER\n',
 
-    # snakemake
-    'shake dry': 'snakemake -p --dryrun\n',
+    'run snake dry': 'snakemake -p --dryrun\n',
 
     # assumes in tmux
     'pain left': [Key('ctrl-b'), Key('left')],
@@ -123,10 +126,6 @@ keymap = {
     'pain up': [Key('ctrl-b'), Key('up')],
     'pain down': [Key('ctrl-b'), Key('down')],
 
-    # 'page up': [Key('shift-pageup')],
-    # 'page down': [Key('shift-pagedown')],
-
-    'snipple': [Key('ctrl-a'), Key('ctrl-k')],
     'kite': [Key('esc'), Key('d')],
     'trough': [Key('ctrl-w')],
     'tools oedipus': [Key('ctrl-x'), Key('ctrl-e')],
